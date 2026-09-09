@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { countLabels, isSittingMember, labelClassName } from "../lib/labels";
 import { loadPoliticians } from "../lib/politicians";
+import { LABELS } from "../lib/types";
 
 const politicians = loadPoliticians();
 ---
@@ -10,7 +11,7 @@ const politicians = loadPoliticians();
   <section class="hero">
     <h1>公約チェック</h1>
     <p class="lede">
-      国会議員の主張と、国会・内閣での行動を短い要約と公式リンクで対照します。ラベルは一致・ズレ・不明のみ。点数化はしません。
+      国会議員の主張と、国会・内閣での行動を短い要約と公式リンクで対照します。ラベルは過程一致・結果到達・ズレ・不明の4つです。点数化はしません。
     </p>
   </section>
 
@@ -36,9 +37,13 @@ const politicians = loadPoliticians();
                 {isSittingMember(politician) ? `${politician.house} ／ ${politician.party}` : `最終所属：${politician.house} ／ ${politician.party}`}
               </p>
               <div class="mini-counts">
-                <span class:list={["label-badge", labelClassName("一致")]}>一致 {counts.一致}</span>
-                <span class:list={["label-badge", labelClassName("ズレ")]}>ズレ {counts.ズレ}</span>
-                <span class:list={["label-badge", labelClassName("不明")]}>不明 {counts.不明}</span>
+                {
+                  LABELS.map((label) => (
+                    <span class:list={["label-badge", labelClassName(label)]}>
+                      {label} {counts[label]}
+                    </span>
+                  ))
+                }
               </div>
             </a>
           </li>

@@ -2,7 +2,15 @@
 
 国会議員の**主張**と**国会・内閣での行動**を、短い要約と公式リンクで対照する静的サイトです。リポジトリのスラッグは `kouyaku-check` です。
 
-ラベルは **一致 / ズレ / 不明** だけです。信頼スコア、偏差値、ランキングはありません。
+ラベルは **過程一致 / 結果到達 / ズレ / 不明** の4つです。信頼スコア、偏差値、ランキング、「日本の健康度」はありません。台帳の書き方は [docs/research-notes.md](docs/research-notes.md) を見てください。
+
+## ラベル
+
+- **過程一致**: 発言・質疑・賛成者など、主張の過程には沿うが、成功条件はまだ満たしていない。
+- **結果到達**: 法律の成立、具体的な政策結果、人事の設置など、主張の成功条件が実際に満たされた。賛成者や提出だけでは付けない。
+- **ズレ** / **不明**: 従来どおり。
+
+`claim_kind` は主張の質です。`hard` は数値・期限・名前のある立法/結果、`soft` は姿勢や議論です。過程一致がすべて soft で結果到達が0件の台帳は、検証が WARN します（失敗にはしません）。
 
 ## プロダクトルール
 
@@ -59,13 +67,14 @@ entries:
       source_type: vote
       diet_session: 221 # なければ null
       action_kind: cabinet_bill # 任意。cabinet_bill | cabinet_decision | pm_speech | cabinet_personnel | other_member_bill | member_bill | speech | written_question | caucus_position | resignation
-    label: 一致 # 一致 | ズレ | 不明
+    label: 過程一致 # 過程一致 | 結果到達 | ズレ | 不明
+    claim_kind: hard # 任意。hard = 数値・期限・名前のある立法/結果。soft = 姿勢・議論・追及
     notes: 判断理由と出典の補足
 ```
 
 3. 任意で `slug`（例: `anno-takahiro`）を置くと `/politicians/{slug}` でも同じページが出ます。`office_status` は `in_office`（省略時）または `not_in_office` です。
 4. `source_url` は実在する公式ページだけを書いてください。公報の安定URLが無いときは、選管の公式掲載ページや党公式ページを使い、`notes` にその旨を書きます。架空URLは禁止です。
-5. `pnpm validate` でスキーマと件数を確認してからコミットします。
+5. `pnpm validate` でスキーマと件数を確認してからコミットします。ラベルが不正なら失敗します。結果到達が0件かつ過程一致がすべて soft のときは stderr に WARN を出しますが、終了コードは 0 のままです。
 
 ## オープンリポジトリの衛生
 

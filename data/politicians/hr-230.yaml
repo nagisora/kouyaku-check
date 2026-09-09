@@ -28,7 +28,8 @@ entries:
       source_type: bill
       diet_session: 219
       action_kind: other_member_bill
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 提出者は重徳和彦君外。本人の衆法ではない。衆院は全会一致で自民会派も賛成。総理は総合経済対策会見でも暫定税率廃止に言及。https://www.kantei.go.jp/jp/104/statement/2025/1121kaiken.html
 
   - id: L02
@@ -45,7 +46,8 @@ entries:
       source_type: statement
       diet_session: 219
       action_kind: pm_speech
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 閣議は令和7年度一般会計補正予算（第1号）等。記名投票は置いていない。https://www.kantei.go.jp/jp/kakugi/2025/kakugi-2025112802.html
 
   - id: L03
@@ -62,7 +64,8 @@ entries:
       source_type: statement
       diet_session: 221
       action_kind: cabinet_decision
-    label: 一致
+    label: 過程一致
+    claim_kind: soft
     notes: 閣議決定の文書であり、本人の衆法ではない。国会での言及は会議録。https://kokkai.ndl.go.jp/txt/122105261X01720260727/7
 
   - id: L04
@@ -79,7 +82,8 @@ entries:
       source_type: bill
       diet_session: 221
       action_kind: cabinet_bill
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 内閣提出。授業料支援の所得制限撤廃が対象。給食無償化はこの対照に含めていない。https://www.mext.go.jp/b_menu/activity/detail/2026/20260331.html
 
   - id: L05
@@ -96,7 +100,8 @@ entries:
       source_type: bill
       diet_session: 219
       action_kind: cabinet_bill
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 内閣提出。国会議員が総理・国務大臣等を兼ねる場合の給与は当分の間支給しない。参院経過 https://www.sangiin.go.jp/japanese/joho1/kousei/gian/219/meisai/m219080219006.htm
 
   - id: L06
@@ -113,7 +118,8 @@ entries:
       source_type: bill
       diet_session: 221
       action_kind: cabinet_bill
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 内閣提出の設置法案。本人の衆法ではない。
 
   - id: L07
@@ -130,7 +136,8 @@ entries:
       source_type: statement
       diet_session: 221
       action_kind: pm_speech
-    label: 一致
+    label: 過程一致
+    claim_kind: soft
     notes: 総理発言であり、条約や法律の成立ではない。国会での言及 https://kokkai.ndl.go.jp/txt/122105261X01720260727/5
 
   - id: L08
@@ -147,7 +154,8 @@ entries:
       source_type: statement
       diet_session: 219
       action_kind: cabinet_personnel
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 主張の補足は総裁選所見。第2次内閣名簿でも担当大臣を維持。https://www.jimin.jp/news/information/211462.html https://www.kantei.go.jp/jp/105/meibo/index.html https://www.kantei.go.jp/jp/105/statement/2026/0727kaiken.html
 
   - id: L09
@@ -164,7 +172,8 @@ entries:
       source_type: statement
       diet_session: null
       action_kind: cabinet_decision
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 着手の対照。2026-09-09時点で成立法は確認できない。会見 https://www.kantei.go.jp/jp/105/statement/2026/0805kaiken.html
 
   - id: L10
@@ -182,6 +191,7 @@ entries:
       diet_session: 221
       action_kind: cabinet_bill
     label: ズレ
+    claim_kind: hard
     notes: 主張は男系維持の典範改正。成立した閣法は皇族数確保が主。会見では今後の安定的皇位継承は立法府の意思を尊重すると述べた。https://www.kantei.go.jp/jp/105/statement/2026/0717kaiken.html https://kokkai.ndl.go.jp/txt/122105261X01720260727/46
 
   - id: L11
@@ -199,6 +209,7 @@ entries:
       diet_session: 221
       action_kind: pm_speech
     label: 不明
+    claim_kind: hard
     notes: 総裁選所見でも憲法改正に言及。国会発議の文書は確認できない。https://www.jimin.jp/news/information/211462.html
 
   - id: L12
@@ -215,7 +226,8 @@ entries:
       source_type: statement
       diet_session: 219
       action_kind: pm_speech
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 所信でも160万円まで対応すると述べた。先行する内閣提出の税制改正（第217回）を総理として実施するもので、本人の衆法ではない。https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html https://www.mof.go.jp/about_mof/bills/217diet/st070204g.html
 
   - id: L13
@@ -233,4 +245,5 @@ entries:
       diet_session: 219
       action_kind: pm_speech
     label: 不明
+    claim_kind: soft
     notes: 公約はリンク水準の言及。存立危機事態の法定・発議文書は確認できない。関連答弁 https://kokkai.ndl.go.jp/txt/121905261X00420251111/146

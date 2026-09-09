@@ -5,10 +5,10 @@
   "packageManager": "pnpm@10.33.3",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
-    "build": "astro build && node scripts/validate-data.mjs",
+    "build": "astro build && node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/validate-data.ts",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
-    "check": "astro check && node scripts/validate-data.mjs",
-    "validate": "node scripts/validate-data.mjs",
+    "check": "astro check && node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/validate-data.ts",
+    "validate": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/validate-data.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",

@@ -1,5 +1,8 @@
-export const LABELS = ["一致", "ズレ", "不明"] as const;
+export const LABELS = ["過程一致", "結果到達", "ズレ", "不明"] as const;
 export type Label = (typeof LABELS)[number];
+
+export const CLAIM_KINDS = ["hard", "soft"] as const;
+export type ClaimKind = (typeof CLAIM_KINDS)[number];
 
 export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none", "statement", "bill"] as const;
 export type SourceType = (typeof SOURCE_TYPES)[number];
@@ -43,6 +46,7 @@ export interface Entry {
   claim: Claim;
   action: Action;
   label: Label;
+  claim_kind?: ClaimKind;
   notes: string;
 }
 

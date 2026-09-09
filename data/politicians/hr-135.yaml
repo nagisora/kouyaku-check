@@ -28,7 +28,8 @@ entries:
       source_type: minutes
       diet_session: 221
       action_kind: speech
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 会議録本人発言。減税の哲学と消費税減税の実施を求めた。記名投票は置いていない。
 
   - id: L02
@@ -45,6 +46,7 @@ entries:
       source_type: none
       diet_session: 221
     label: 不明
+    claim_kind: hard
     notes: 観察期間内に本人提出の消費税減税衆法は確認できない。
 
   - id: L03
@@ -61,7 +63,8 @@ entries:
       source_type: bill
       diet_session: 216
       action_kind: member_bill
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 提出者一覧に河村たかし君。要綱は国会議員関係政治団体の代表者異動と寄附の制限。閉会中審査。
 
   - id: L04
@@ -78,7 +81,8 @@ entries:
       source_type: statement
       diet_session: 219
       action_kind: written_question
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 質問第167号。立法の成否はこの対照に含めていない。
 
   - id: L05
@@ -95,7 +99,8 @@ entries:
       source_type: statement
       diet_session: 221
       action_kind: written_question
-    label: 一致
+    label: 過程一致
+    claim_kind: soft
     notes: 質問第39号。教育・子ども・デジタル等を公共事業と同様に扱うよう財政法改正を問うた。
 
   - id: L06
@@ -112,7 +117,8 @@ entries:
       source_type: statement
       diet_session: 221
       action_kind: written_question
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: L05と同じ主意書。真の積極財政を実現するための財政法第四条等の改正。
 
   - id: L07
@@ -129,7 +135,8 @@ entries:
       source_type: minutes
       diet_session: 216
       action_kind: speech
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 会議録本人発言。記名投票は置いていない。
 
   - id: L08
@@ -146,7 +153,8 @@ entries:
       source_type: minutes
       diet_session: 221
       action_kind: speech
-    label: 一致
+    label: 過程一致
+    claim_kind: soft
     notes: 会議録本人発言。暗号資産課税との矛盾を問うた。
 
   - id: L09
@@ -163,7 +171,8 @@ entries:
       source_type: statement
       diet_session: 221
       action_kind: written_question
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 質問第40号。繁殖制限の周知と愛護センター業務への追加を問うた。殺処分ゼロの立法は確認していない。
 
   - id: L10
@@ -180,6 +189,7 @@ entries:
       source_type: none
       diet_session: null
     label: 不明
+    claim_kind: hard
     notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
 
   - id: L11
@@ -196,6 +206,7 @@ entries:
       source_type: none
       diet_session: null
     label: 不明
+    claim_kind: hard
     notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
 
   - id: L12
@@ -212,6 +223,7 @@ entries:
       source_type: none
       diet_session: null
     label: 不明
+    claim_kind: soft
     notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
 
   - id: L13
@@ -228,7 +240,8 @@ entries:
       source_type: bill
       diet_session: 217
       action_kind: other_member_bill
-    label: 一致
+    label: 過程一致
+    claim_kind: hard
     notes: 提出者は逢沢一郎君外。本人提出の衆法ではない。2025-04-02公布。
 
   - id: L14
@@ -246,4 +259,5 @@ entries:
       diet_session: 219
       action_kind: written_question
     label: 不明
+    claim_kind: soft
     notes: 質問にとどまり、米価の立法や表決は確認できない。輸出に関する質問は第217回。https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a217228.htm

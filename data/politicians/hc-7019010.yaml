@@ -29,7 +29,8 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.pdf
       source_type: vote
       diet_session: 214
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 参議院の公式記名投票PDF。観察期間内の公式資料に限る。
 
   - id: L02
@@ -46,6 +47,7 @@ entries:
       source_type: vote
       diet_session: 214
     label: 不明
+    claim_kind: hard
     notes: 表決は反対で確認できる。会期反対を掲げる事前の公約との対応は取れない。
 
   - id: L03
@@ -62,6 +64,7 @@ entries:
       source_type: minutes
       diet_session: 214
     label: 不明
+    claim_kind: soft
     notes: 政府開発援助等及び沖縄・北方問題に関する特別委員会の委員。会議録に氏名はあるが本人発言はない。https://kokkai.ndl.go.jp/txt/121415359X00220241009/1
 
   - id: L04
@@ -78,6 +81,7 @@ entries:
       source_type: none
       diet_session: 214
     label: 不明
+    claim_kind: soft
     notes: 第214回の在職は10月1日から15日まで。この窓の立法行動は確認できない。
 
   - id: L05
@@ -94,6 +98,7 @@ entries:
       source_type: none
       diet_session: 214
     label: 不明
+    claim_kind: soft
     notes: 第214回の在職期間に政治資金の表決・発言は確認できない。
 
   - id: L06
@@ -110,7 +115,8 @@ entries:
       source_type: statement
       diet_session: 215
       action_kind: resignation
-    label: 一致
+    label: 結果到達
+    claim_kind: hard
     notes: 第215回国会概観に音喜多駿君の退職（6.10.15）と公選法90条による退職の記載。衆議院の議席は得ていない。
 
   - id: L07
@@ -127,4 +133,5 @@ entries:
       source_type: none
       diet_session: 214
     label: 不明
+    claim_kind: hard
     notes: 最終会派名に教育無償化を実現する会を含む。第214回の立法・発言は確認できない。

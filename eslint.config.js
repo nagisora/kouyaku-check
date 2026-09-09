@@ -120,9 +120,9 @@ export default tseslint.config(
         "error",
         {
           min: 3,
-          // Product labels are two-character Japanese words. Without these
-          // exceptions, new files cannot use 一致 / ズレ / 不明 at all.
-          exceptions: ["_", "i", "j", "k", "id", "ok", "to", "up", "js", "fs", "os", "一致", "ズレ", "不明"],
+          // Product labels ズレ / 不明 are two-character Japanese words.
+          // Without these exceptions, new files cannot use them at all.
+          exceptions: ["_", "i", "j", "k", "id", "ok", "to", "up", "js", "fs", "os", "ズレ", "不明"],
         },
       ],
     },

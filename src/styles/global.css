@@ -6,9 +6,12 @@
   --line: #e7e0d6;
   --accent: #1f3d5c;
   --link: #1d4e72;
-  --match-bg: #e6f4ef;
-  --match-ink: #14532d;
-  --match-line: #86b89a;
+  --process-bg: #eaf4ee;
+  --process-ink: #3d6b4a;
+  --process-line: #b3d0bd;
+  --outcome-bg: #cfe8d8;
+  --outcome-ink: #14532d;
+  --outcome-line: #5d9a73;
   --gap-bg: #f8efe4;
   --gap-ink: #7c3d12;
   --gap-line: #d4b48a;
@@ -184,7 +187,7 @@ a:hover {
 
 .count-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin: 20px 0 28px;
 }
@@ -204,10 +207,16 @@ a:hover {
   font-size: 0.82rem;
 }
 
-.count-card.match {
-  background: var(--match-bg);
-  border-color: var(--match-line);
-  color: var(--match-ink);
+.count-card.process {
+  background: var(--process-bg);
+  border-color: var(--process-line);
+  color: var(--process-ink);
+}
+
+.count-card.outcome {
+  background: var(--outcome-bg);
+  border-color: var(--outcome-line);
+  color: var(--outcome-ink);
 }
 
 .count-card.gap {
@@ -338,10 +347,16 @@ a:hover {
   letter-spacing: 0.06em;
 }
 
-.label-match {
-  background: var(--match-bg);
-  border-color: var(--match-line);
-  color: var(--match-ink);
+.label-process {
+  background: var(--process-bg);
+  border-color: var(--process-line);
+  color: var(--process-ink);
+}
+
+.label-outcome {
+  background: var(--outcome-bg);
+  border-color: var(--outcome-line);
+  color: var(--outcome-ink);
 }
 
 .label-gap {
@@ -364,6 +379,10 @@ a:hover {
 @media (min-width: 640px) {
   .compare {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .count-row {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
