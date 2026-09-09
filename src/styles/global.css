@@ -337,6 +337,20 @@ a:hover {
   letter-spacing: 0.08em;
 }
 
+.kind-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
 .side p {
   margin: 0 0 8px;
 }

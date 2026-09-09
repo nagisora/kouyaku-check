@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDietSession, isLabel, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
+import { formatDietSession, isActionKind, isLabel, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
 
 describe("formatDietSession", () => {
   it("keeps empty values as null", () => {
@@ -32,7 +32,17 @@ describe("isSourceType", () => {
   it("accepts the official source types only", () => {
     expect(isSourceType("bulletin")).toBe(true);
     expect(isSourceType("vote")).toBe(true);
+    expect(isSourceType("statement")).toBe(true);
+    expect(isSourceType("bill")).toBe(true);
     expect(isSourceType("tweet")).toBe(false);
+  });
+});
+
+describe("isActionKind", () => {
+  it("accepts cabinet and other-member kinds only", () => {
+    expect(isActionKind("cabinet_bill")).toBe(true);
+    expect(isActionKind("pm_speech")).toBe(true);
+    expect(isActionKind("floor_vote")).toBe(false);
   });
 });
 

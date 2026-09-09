@@ -2,8 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { entrySlot, formatDietSession, isLabel, isSourceType } from "./yaml-values";
-import type { Entry, Politician, PoliticianMeta } from "./types";
+import { entrySlot, formatDietSession, isActionKind, isLabel, isSourceType } from "./yaml-values";
+import type { Action, Claim, Entry, Politician, PoliticianMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -58,7 +58,39 @@ function parseMeta(raw: unknown): PoliticianMeta | undefined {
     wikidata: typeof raw.wikidata === "string" ? raw.wikidata : undefined,
     elected_on: typeof raw.elected_on === "string" ? raw.elected_on : undefined,
     in_office_from: typeof raw.in_office_from === "string" ? raw.in_office_from : undefined,
+    district: typeof raw.district === "string" ? raw.district : undefined,
     window_note: typeof raw.window_note === "string" ? raw.window_note : undefined,
+  };
+}
+
+function parseClaim(raw: Record<string, unknown>, slot: string): Claim {
+  return {
+    summary: asString(raw.summary, `${slot}.claim.summary`),
+    date: asOptionalString(raw.date),
+    source_url: typeof raw.source_url === "string" ? raw.source_url : "",
+    source_type: asSourceType(raw.source_type, `${slot}.claim`),
+  };
+}
+
+function parseActionKind(value: unknown, field: string) {
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+  if (!isActionKind(value)) {
+    throw new Error(`Invalid action_kind for ${field}`);
+  }
+  return value;
+}
+
+function parseAction(raw: Record<string, unknown>, slot: string): Action {
+  const actionKind = parseActionKind(raw.action_kind, `${slot}.action`);
+  return {
+    summary: asString(raw.summary, `${slot}.action.summary`),
+    date: asOptionalString(raw.date),
+    source_url: typeof raw.source_url === "string" ? raw.source_url : "",
+    source_type: asSourceType(raw.source_type, `${slot}.action`),
+    diet_session: formatDietSession(raw.diet_session),
+    ...(actionKind === undefined ? {} : { action_kind: actionKind }),
   };
 }
 
@@ -80,19 +112,8 @@ function parseEntry(raw: unknown, index: number, filePath: string): Entry {
   return {
     id: asString(raw.id, `${slot}.id`),
     topic: asString(raw.topic, `${slot}.topic`),
-    claim: {
-      summary: asString(claim.summary, `${slot}.claim.summary`),
-      date: asOptionalString(claim.date),
-      source_url: typeof claim.source_url === "string" ? claim.source_url : "",
-      source_type: asSourceType(claim.source_type, `${slot}.claim`),
-    },
-    action: {
-      summary: asString(action.summary, `${slot}.action.summary`),
-      date: asOptionalString(action.date),
-      source_url: typeof action.source_url === "string" ? action.source_url : "",
-      source_type: asSourceType(action.source_type, `${slot}.action`),
-      diet_session: formatDietSession(action.diet_session),
-    },
+    claim: parseClaim(claim, slot),
+    action: parseAction(action, slot),
     label,
     notes: typeof raw.notes === "string" ? raw.notes : "",
   };

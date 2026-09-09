@@ -1,6 +1,6 @@
 # 公約チェック
 
-国会議員の**主張**と**国会での行動**を、短い要約と公式リンクで対照する静的サイトです。リポジトリのスラッグは `kouyaku-check` です。
+国会議員の**主張**と**国会・内閣での行動**を、短い要約と公式リンクで対照する静的サイトです。リポジトリのスラッグは `kouyaku-check` です。
 
 ラベルは **一致 / ズレ / 不明** だけです。信頼スコア、偏差値、ランキングはありません。
 
@@ -8,11 +8,11 @@
 
 - データベースは使いません。`data/politicians/*.yaml` をビルド時に読み、Astro で静的生成します。
 - 議員は1人1ページ。インデックスには掲載対象のみを出します。
-- 出典は公開資料（選挙公報、党公式、国会会議録、本会議表決）に限ります。
+- 出典は公開資料（選挙公報、党公式、国会会議録、本会議表決、首相官邸の所信・会見、閣議、議案経過）に限ります。
 - 長文の verbatim 転載はしません。約40字の言い換えと公式URLだけを置きます。
 - 生のスクレイプダンプ、非公開メモ、秘密情報はリポジトリに入れません。
 - すべてのページに「公開資料の対照であり、断罪・判決・法律相談ではない」旨の注意書きを出します。
-- 就任前の表決は作りません。安野貴博は2025-07-20当選、2025-07-29就任。観察開始は第218回国会（2025-08-01召集）以降です。
+- 就任前の表決は作りません。安野貴博は2025-07-20当選、2025-07-29就任。観察開始は第218回国会（2025-08-01召集）以降です。高市早苗は総理就任（2025-10-21）以降を観察し、閣法・閣議・総理発言・内閣人事を対照します。閣法は本人の衆法としては扱いません。
 
 ## 技術
 
@@ -29,7 +29,7 @@ pnpm preview
 
 ## YAML の追加方法
 
-1. `data/politicians/{id}.yaml` を追加します。ファイル名と `id` を一致させてください。参議院は `hc-{議員番号}` を推奨します。
+1. `data/politicians/{id}.yaml` を追加します。ファイル名と `id` を一致させてください。参議院は `hc-{議員番号}`、衆議院は `hr-{議員番号}` を推奨します。
 2. 必須フィールド:
 
 ```yaml
@@ -50,13 +50,14 @@ entries:
       summary: 約40字の言い換え
       date: YYYY-MM-DD
       source_url: https://...
-      source_type: bulletin # bulletin | party | minutes | vote | none
+      source_type: bulletin # bulletin | party | minutes | vote | none | statement | bill
     action:
       summary: 約40字の言い換え
       date: YYYY-MM-DD # なければ null
       source_url: https://... # なければ ""
       source_type: vote
       diet_session: 221 # なければ null
+      action_kind: cabinet_bill # 任意。cabinet_bill | cabinet_decision | pm_speech | cabinet_personnel | other_member_bill
     label: 一致 # 一致 | ズレ | 不明
     notes: 判断理由と出典の補足
 ```
@@ -80,7 +81,7 @@ entries:
 2. **Add New… → Project** を開き、`nagisora/kouyaku-check` を Import する。
 3. Framework Preset が **Astro** になっていればそのまま。Build Command は `pnpm run build`、Output は `dist`。
 4. ルートディレクトリはリポジトリ直下。環境変数は不要です。
-5. **Deploy** する。プレビューURLで `/` と `/politicians/hc-7025005` を確認する。
+5. Deploy する。プレビューURLで `/` と `/politicians/hc-7025005` と `/politicians/hr-230` を確認する。
 6. 問題なければ Production に昇格（または main マージ後の自動デプロイ）する。
 
 GitHub 側で Vercel GitHub App のアクセスをこのリポジトリに許可する必要があります。トークンを発行して README に書く必要はありません。

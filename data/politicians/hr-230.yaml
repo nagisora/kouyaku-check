@@ -1,0 +1,236 @@
+id: hr-230
+slug: takaichi-sanae
+name: 高市早苗
+name_kana: たかいち さなえ
+house: 衆議院
+party: 自由民主党・無所属の会
+profile_url: https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/230.html
+updated_at: "2026-09-09"
+window:
+  from: "2025-10-21"
+  to: null
+meta:
+  wikidata: Q1705028
+  district: 奈良県第2区
+  window_note: 第104代内閣総理大臣（2025-10-21指名）。第105代・第2次内閣は2026-02-18発足。選挙区は奈良県第2区。観察は総理就任以降。対照する行動は閣法・閣議・総理発言・内閣人事が中心で、本人提出の衆法や記名投票は置いていない。https://www.kantei.go.jp/jp/104/actions/202510/21shimei.html https://www.kantei.go.jp/jp/105/actions/202602/18takaichinaikaku2.html https://www.kantei.go.jp/jp/105/meibo/daijin/takaichi_sanae.html
+entries:
+  - id: L01
+    topic: gasoline-tax
+    claim:
+      summary: ガソリン税の暫定税率を今国会で廃止する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 他議員提出の衆法が成立し、自民会派は賛成
+      date: "2025-11-25"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE024E.htm
+      source_type: bill
+      diet_session: 219
+      action_kind: other_member_bill
+    label: 一致
+    notes: 提出者は重徳和彦君外。本人の衆法ではない。衆院は全会一致で自民会派も賛成。総理は総合経済対策会見でも暫定税率廃止に言及。https://www.kantei.go.jp/jp/104/statement/2025/1121kaiken.html
+
+  - id: L02
+    topic: defense-gdp
+    claim:
+      summary: 防衛費の対GDP比2%を今年度中に前倒しする
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 会見で2%前倒しを述べ、補正予算を閣議決定
+      date: "2025-11-21"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1121kaiken.html
+      source_type: statement
+      diet_session: 219
+      action_kind: pm_speech
+    label: 一致
+    notes: 閣議は令和7年度一般会計補正予算（第1号）等。記名投票は置いていない。https://www.kantei.go.jp/jp/kakugi/2025/kakugi-2025112802.html
+
+  - id: L03
+    topic: proactive-fiscal
+    claim:
+      summary: 責任ある積極財政で戦略的に財政出動する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 骨太2026を閣議決定し、国会で方針を述べる
+      date: "2026-07-21"
+      source_url: https://www5.cao.go.jp/keizai-shimon/kaigi/cabinet/honebuto/2026/decision0721.html
+      source_type: statement
+      diet_session: 221
+      action_kind: cabinet_decision
+    label: 一致
+    notes: 閣議決定の文書であり、本人の衆法ではない。国会での言及は会議録。https://kokkai.ndl.go.jp/txt/122105261X01720260727/7
+
+  - id: L04
+    topic: high-school-tuition
+    claim:
+      summary: 高校無償化を来年4月から実施する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 高校就学支援金の拡充閣法が成立した
+      date: "2026-03-31"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE151A.htm
+      source_type: bill
+      diet_session: 221
+      action_kind: cabinet_bill
+    label: 一致
+    notes: 内閣提出。授業料支援の所得制限撤廃が対象。給食無償化はこの対照に含めていない。https://www.mext.go.jp/b_menu/activity/detail/2026/20260331.html
+
+  - id: L05
+    topic: minister-pay
+    claim:
+      summary: 閣僚等の給与を当分の間受け取らない法改正をする
+      date: "2025-10-21"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1021kaiken.html
+      source_type: statement
+    action:
+      summary: 特別職給与法改正の閣法が成立した
+      date: "2025-12-16"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE099A.htm
+      source_type: bill
+      diet_session: 219
+      action_kind: cabinet_bill
+    label: 一致
+    notes: 内閣提出。国会議員が総理・国務大臣等を兼ねる場合の給与は当分の間支給しない。参院経過 https://www.sangiin.go.jp/japanese/joho1/kousei/gian/219/meisai/m219080219006.htm
+
+  - id: L06
+    topic: disaster-agency
+    claim:
+      summary: 来年度の防災庁設立に向け準備を加速する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 防災庁設置の閣法が成立した
+      date: "2026-07-17"
+      source_url: https://www.shugiin.go.jp/Internet/itdb_gian.nsf/html/gian/keika/1DE1612.htm
+      source_type: bill
+      diet_session: 221
+      action_kind: cabinet_bill
+    label: 一致
+    notes: 内閣提出の設置法案。本人の衆法ではない。
+
+  - id: L07
+    topic: foip
+    claim:
+      summary: 自由で開かれたインド太平洋を外交の柱とする
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: ベトナム演説でFOIPを述べ、国会でも言及した
+      date: "2026-05-02"
+      source_url: https://www.kantei.go.jp/jp/105/actions/202605/02vietnam3.html
+      source_type: statement
+      diet_session: 221
+      action_kind: pm_speech
+    label: 一致
+    notes: 総理発言であり、条約や法律の成立ではない。国会での言及 https://kokkai.ndl.go.jp/txt/122105261X01720260727/5
+
+  - id: L08
+    topic: foreign-residents
+    claim:
+      summary: 外国人政策の担当大臣を新たに置く
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 担当大臣を置き、関係閣僚会議で指示した
+      date: "2025-11-04"
+      source_url: https://www.kantei.go.jp/jp/104/actions/202511/04gaikokujin.html
+      source_type: statement
+      diet_session: 219
+      action_kind: cabinet_personnel
+    label: 一致
+    notes: 主張の補足は総裁選所見。第2次内閣名簿でも担当大臣を維持。https://www.jimin.jp/news/information/211462.html https://www.kantei.go.jp/jp/105/meibo/index.html https://www.kantei.go.jp/jp/105/statement/2026/0727kaiken.html
+
+  - id: L09
+    topic: refundable-tax-credit
+    claim:
+      summary: 給付付き税額控除の制度設計に早期着手する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 導入の基本方針を閣議決定した
+      date: "2026-08-05"
+      source_url: https://www.cas.go.jp/jp/seisaku/shouhizei_zeigakukoujo/index.html
+      source_type: statement
+      diet_session: null
+      action_kind: cabinet_decision
+    label: 一致
+    notes: 着手の対照。2026-09-09時点で成立法は確認できない。会見 https://www.kantei.go.jp/jp/105/statement/2026/0805kaiken.html
+
+  - id: L10
+    topic: imperial-succession
+    claim:
+      summary: 皇統を男系で引き継ぐよう皇室典範を改正する
+      date: "2025-09-22"
+      source_url: https://www.jimin.jp/news/information/211462.html
+      source_type: party
+    action:
+      summary: 皇族数確保の典範改正閣法が成立した
+      date: "2026-07-17"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE2B16.htm
+      source_type: bill
+      diet_session: 221
+      action_kind: cabinet_bill
+    label: ズレ
+    notes: 主張は男系維持の典範改正。成立した閣法は皇族数確保が主。会見では今後の安定的皇位継承は立法府の意思を尊重すると述べた。https://www.kantei.go.jp/jp/105/statement/2026/0717kaiken.html https://kokkai.ndl.go.jp/txt/122105261X01720260727/46
+
+  - id: L11
+    topic: constitutional-amendment
+    claim:
+      summary: 在任中に憲法改正の国会発議を実現する
+      date: "2025-10-24"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html
+      source_type: statement
+    action:
+      summary: 憲法審査会の議論加速を期待すると述べた
+      date: "2026-02-18"
+      source_url: https://www.kantei.go.jp/jp/105/statement/2026/0218kaiken.html
+      source_type: statement
+      diet_session: 221
+      action_kind: pm_speech
+    label: 不明
+    notes: 総裁選所見でも憲法改正に言及。国会発議の文書は確認できない。https://www.jimin.jp/news/information/211462.html
+
+  - id: L12
+    topic: income-tax-wall
+    claim:
+      summary: 103万円の壁を年末調整で160万円まで対応する
+      date: "2025-10-21"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1021kaiken.html
+      source_type: statement
+    action:
+      summary: 経済対策会見で160万円対応と年末調整反映を述べた
+      date: "2025-11-21"
+      source_url: https://www.kantei.go.jp/jp/104/statement/2025/1121kaiken.html
+      source_type: statement
+      diet_session: 219
+      action_kind: pm_speech
+    label: 一致
+    notes: 所信でも160万円まで対応すると述べた。先行する内閣提出の税制改正（第217回）を総理として実施するもので、本人の衆法ではない。https://www.kantei.go.jp/jp/104/statement/2025/1024shoshinhyomei.html https://www.mof.go.jp/about_mof/bills/217diet/st070204g.html
+
+  - id: L13
+    topic: taiwan-contingency
+    claim:
+      summary: 党公約は台湾海峡の平和と安全に言及する
+      date: "2026-01-21"
+      source_url: https://www.jimin.jp/news/policy/212294.html
+      source_type: party
+    action:
+      summary: 存立危機の該当は個別具体の状況で判断すると答弁
+      date: "2025-11-07"
+      source_url: https://kokkai.ndl.go.jp/txt/121905261X00220251107/188
+      source_type: minutes
+      diet_session: 219
+      action_kind: pm_speech
+    label: 不明
+    notes: 公約はリンク水準の言及。存立危機事態の法定・発議文書は確認できない。関連答弁 https://kokkai.ndl.go.jp/txt/121905261X00420251111/146
