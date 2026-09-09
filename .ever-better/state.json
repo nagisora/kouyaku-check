@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:18:28.222Z",
+  "updatedAt": "2026-09-09T01:19:59.554Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -180,6 +180,27 @@
       "rule": "@typescript-eslint/restrict-template-expressions",
       "commit": "d7474d81580afad39daed0a5a80ec081465771ec",
       "at": "2026-09-09T01:18:28.221Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "src/env.d.ts is Astro's required /// <reference path>. Converting to import may break astro check. Preferred: keep grandfathered until Astro generates a stub ESLint accepts.",
+      "rule": "@typescript-eslint/triple-slash-reference",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:57.936Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "Remaining 26 unsafe-* / restrict-plus live in scripts/validate-data.mjs (untyped). Migrating that file to TS is tighten. A one-line .entries() rewrite raised new member-access above the ceiling; reverted.",
+      "rule": "@typescript-eslint/no-unsafe-member-access",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:58.746Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "Astro ESLint gap: do not invent a plugin stack. Prefer wait for ever-better. GitHub issue could not be created (token has no issues:write).",
+      "rule": "framework-files",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:59.553Z"
     }
   ]
 }
