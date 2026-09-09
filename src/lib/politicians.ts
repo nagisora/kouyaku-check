@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
+import { compareFileNames } from "./file-names";
 import type { Politician } from "./types";
 import { LABELS, SOURCE_TYPES } from "./types";
 
@@ -133,7 +134,7 @@ export function loadPoliticians(): Politician[] {
   const files = fs
     .readdirSync(DATA_DIR)
     .filter((name: string) => name.endsWith(".yaml") || name.endsWith(".yml"))
-    .sort();
+    .sort(compareFileNames);
 
   return files.map((fileName: string) => {
     const filePath = path.join(DATA_DIR, fileName);
