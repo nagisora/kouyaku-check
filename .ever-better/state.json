@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:13:40.935Z",
+  "updatedAt": "2026-09-09T01:14:35.144Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -116,9 +116,9 @@
       "status": "draining"
     },
     "@typescript-eslint/no-base-to-string": {
-      "baseline": 1,
-      "current": 1,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     },
     "@typescript-eslint/consistent-type-definitions": {
       "baseline": 0,
@@ -152,6 +152,13 @@
       "rule": "sonarjs/no-alphabetical-sort",
       "commit": "014b592c97389e9140b9a6b8048598867d43373c",
       "at": "2026-09-09T01:13:40.934Z"
+    },
+    {
+      "kind": "drained",
+      "text": "formatDietSession: string|number only; objects no longer become [object Object]",
+      "rule": "@typescript-eslint/no-base-to-string",
+      "commit": "caf47b3554211ac43fb05091bdcae6789b4bf333",
+      "at": "2026-09-09T01:14:35.143Z"
     }
   ]
 }
