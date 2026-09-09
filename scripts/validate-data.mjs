@@ -31,7 +31,7 @@ function asText(value) {
 const files = fs
   .readdirSync(DATA_DIR)
   .filter((name) => name.endsWith(".yaml") || name.endsWith(".yml"))
-  .sort();
+  .sort((left, right) => left.localeCompare(right));
 
 if (files.length === 0) {
   fail("No politician YAML files found.");

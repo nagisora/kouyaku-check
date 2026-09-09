@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:12:30.976Z",
+  "updatedAt": "2026-09-09T01:13:40.935Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -71,9 +71,9 @@
   },
   "rules": {
     "sonarjs/no-alphabetical-sort": {
-      "baseline": 2,
-      "current": 2,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     },
     "@typescript-eslint/no-unsafe-member-access": {
       "baseline": 21,
@@ -145,6 +145,13 @@
       "rule": "@typescript-eslint/consistent-type-definitions",
       "commit": "f9dd939706ff7623b0a3e8450caae4549d6ce449",
       "at": "2026-09-09T01:12:30.976Z"
+    },
+    {
+      "kind": "drained",
+      "text": "2 .sort() calls now localeCompare via compareFileNames",
+      "rule": "sonarjs/no-alphabetical-sort",
+      "commit": "014b592c97389e9140b9a6b8048598867d43373c",
+      "at": "2026-09-09T01:13:40.934Z"
     }
   ]
 }

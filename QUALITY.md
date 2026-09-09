@@ -5,7 +5,7 @@ Maintained by [ever-better](https://github.com/isamu/ever-better). Numbers are r
 
 - Phase: **drain**
 - Frozen: 2026-09-09T01:10:05.550Z
-- Open violations: **56**
+- Open violations: **54**
 - Rules improved since the ceiling: **0**
 - Everything is at or below its ceiling.
 
@@ -16,7 +16,7 @@ Top to bottom. An unattended run works this list and nothing else.
 - [x] **P0 diagnose** — taken 2026-09-09T01:10:27.426Z
 - [ ] **P1 bootstrap** — 1 gap(s) still open
 - [x] **P2 freeze** — frozen 2026-09-09T01:10:05.550Z
-- [ ] **P3 drain** — 56 violations across 10 rules
+- [ ] **P3 drain** — 54 violations across 9 rules
   - [ ] `@typescript-eslint/no-unsafe-call` — 1 left
   - [ ] `@typescript-eslint/restrict-plus-operands` — 1 left
   - [ ] `@typescript-eslint/triple-slash-reference` — 1 left
@@ -35,7 +35,6 @@ Ceiling is the count at the last freeze. It may fall and must never rise.
 | `@typescript-eslint/restrict-template-expressions` | 21 | 21 | 0 | draining |
 | `@typescript-eslint/consistent-type-assertions` | 4 | 4 | 0 | draining |
 | `@typescript-eslint/no-unsafe-argument` | 3 | 3 | 0 | draining |
-| `sonarjs/no-alphabetical-sort` | 2 | 2 | 0 | draining |
 | `@typescript-eslint/no-unsafe-call` | 1 | 1 | 0 | draining |
 | `@typescript-eslint/restrict-plus-operands` | 1 | 1 | 0 | draining |
 | `@typescript-eslint/triple-slash-reference` | 1 | 1 | 0 | draining |
@@ -63,6 +62,7 @@ Ceiling is the count at the last freeze. It may fall and must never rise.
 
 | Date | Commit | Kind | Rule | What |
 | --- | --- | --- | --- | --- |
+| 2026-09-09 | 014b592c | drained | sonarjs/no-alphabetical-sort | 2 .sort() calls now localeCompare via compareFileNames |
 | 2026-09-09 | f9dd9397 | drained | @typescript-eslint/consistent-type-definitions | 6 type aliases -> interface in src/lib/types.ts; runtime unchanged |
 | 2026-09-09 | dcd555fa | note |  | ever-better 0.5.0 bootstrap: prettier + eslint 10 + vitest + knip + gitleaks CI. typecheck is astro check because tsc cannot read .astro. id-length exceptions for 一致/ズレ/不明. No eslint-plugin-astro (upstream gap). |
 

@@ -14,9 +14,6 @@
     },
     "@typescript-eslint/restrict-template-expressions": {
       "count": 12
-    },
-    "sonarjs/no-alphabetical-sort": {
-      "count": 1
     }
   },
   "src/env.d.ts": {
@@ -35,9 +32,6 @@
       "count": 9
     },
     "max-lines-per-function": {
-      "count": 1
-    },
-    "sonarjs/no-alphabetical-sort": {
       "count": 1
     }
   }
