@@ -1,5 +1,5 @@
-import { LABELS, SOURCE_TYPES } from "./types";
-import type { Label, SourceType } from "./types";
+import { ACTION_KINDS, LABELS, SOURCE_TYPES } from "./types";
+import type { ActionKind, Label, SourceType } from "./types";
 
 export function formatDietSession(value: unknown): string | null {
   if (value === null || value === undefined) {
@@ -20,6 +20,10 @@ export function isLabel(value: unknown): value is Label {
 
 export function isSourceType(value: unknown): value is SourceType {
   return typeof value === "string" && SOURCE_TYPES.some((item) => item === value);
+}
+
+export function isActionKind(value: unknown): value is ActionKind {
+  return typeof value === "string" && ACTION_KINDS.some((item) => item === value);
 }
 
 export function toMessage(value: unknown): string {

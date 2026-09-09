@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { countLabels, labelClassName, sourceTypeLabel, topicLabel } from "../../lib/labels";
+import { actionKindLabel, actionSideHeading, countLabels, labelClassName, profileLinkLabel, sourceTypeLabel, topicLabel } from "../../lib/labels";
 import { loadPoliticians, politicianRoutes } from "../../lib/politicians";
 import type { Politician } from "../../lib/types";
 
@@ -19,6 +19,10 @@ type Props = {
 
 const { politician } = Astro.props;
 const counts = countLabels(politician.entries);
+const district = politician.meta?.district;
+const houseLine = district
+  ? `${politician.house} ／ ${politician.party} ／ ${district}`
+  : `${politician.house} ／ ${politician.party}`;
 const windowTo = politician.window.to ?? "継続中";
 const windowNote =
   politician.meta?.window_note ??
@@ -41,9 +45,9 @@ function formatSession(value: string | number | null): string | null {
   <section class="hero">
     <p class="kana">{politician.name_kana}</p>
     <h1>{politician.name}</h1>
-    <p class="meta-line">{politician.house} ／ {politician.party}</p>
+    <p class="meta-line">{houseLine}</p>
     <div class="profile-links">
-      <a href={politician.profile_url} rel="noopener noreferrer">参議院プロフィール</a>
+      <a href={politician.profile_url} rel="noopener noreferrer">{profileLinkLabel(politician.house)}</a>
       {
         politician.meta?.wikidata && (
           <a
@@ -78,6 +82,7 @@ function formatSession(value: string | number | null): string | null {
     {
       politician.entries.map((entry) => {
         const session = formatSession(entry.action.diet_session);
+        const actionKind = entry.action.action_kind;
         return (
           <article class="entry-card" id={entry.id}>
             <div class="entry-head">
@@ -105,7 +110,14 @@ function formatSession(value: string | number | null): string | null {
                 </p>
               </div>
               <div class="side">
-                <h3>国会での行動</h3>
+                <h3>
+                  {actionSideHeading(actionKind)}
+                  {
+                    actionKind ? (
+                      <span class="kind-badge">{actionKindLabel(actionKind)}</span>
+                    ) : null
+                  }
+                </h3>
                 <p>{entry.action.summary}</p>
                 <p class="source-row">
                   {formatDate(entry.action.date)}

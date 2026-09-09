@@ -4,7 +4,7 @@ import yaml from "js-yaml";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 const LABELS = new Set(["一致", "ズレ", "不明"]);
-const SOURCE_TYPES = new Set(["bulletin", "party", "minutes", "vote", "none"]);
+const SOURCE_TYPES = new Set(["bulletin", "party", "minutes", "vote", "none", "statement", "bill"]);
 
 function fail(message) {
   console.error(message);
@@ -58,6 +58,7 @@ if (files.length === 0) {
 }
 
 let listedAnno = false;
+let listedTakaichi = false;
 
 for (const fileName of files) {
   const filePath = path.join(DATA_DIR, fileName);
@@ -126,11 +127,25 @@ for (const fileName of files) {
     }
   }
 
+  if (fileName === "hr-230.yaml") {
+    listedTakaichi = true;
+    if (counts.一致 !== 10 || counts.ズレ !== 1 || counts.不明 !== 2) {
+      fail(`${fileName}: expected 10 一致 / 1 ズレ / 2 不明, got ${toMessage(counts.一致)} / ${toMessage(counts.ズレ)} / ${toMessage(counts.不明)}`);
+    }
+    if (ids.size !== 13) {
+      fail(`${fileName}: expected 13 entries`);
+    }
+  }
+
   console.log(`${fileName}: ${toMessage(counts.一致)} 一致 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`);
 }
 
 if (!listedAnno) {
   fail("hc-7025005.yaml must be present and listed.");
+}
+
+if (!listedTakaichi) {
+  fail("hr-230.yaml must be present and listed.");
 }
 
 if (process.exitCode) {

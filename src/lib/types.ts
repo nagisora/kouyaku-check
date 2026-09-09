@@ -1,8 +1,11 @@
 export const LABELS = ["一致", "ズレ", "不明"] as const;
 export type Label = (typeof LABELS)[number];
 
-export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none"] as const;
+export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none", "statement", "bill"] as const;
 export type SourceType = (typeof SOURCE_TYPES)[number];
+
+export const ACTION_KINDS = ["cabinet_bill", "cabinet_decision", "pm_speech", "cabinet_personnel", "other_member_bill"] as const;
+export type ActionKind = (typeof ACTION_KINDS)[number];
 
 export interface Claim {
   summary: string;
@@ -17,6 +20,7 @@ export interface Action {
   source_url: string;
   source_type: SourceType;
   diet_session: string | number | null;
+  action_kind?: ActionKind;
 }
 
 export interface Entry {
@@ -37,6 +41,7 @@ export interface PoliticianMeta {
   wikidata?: string;
   elected_on?: string;
   in_office_from?: string;
+  district?: string;
   window_note?: string;
 }
 
