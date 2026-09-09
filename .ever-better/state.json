@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:16:44.012Z",
+  "updatedAt": "2026-09-09T01:18:28.222Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -86,9 +86,9 @@
       "status": "draining"
     },
     "@typescript-eslint/restrict-template-expressions": {
-      "baseline": 21,
-      "current": 21,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     },
     "@typescript-eslint/no-unsafe-argument": {
       "baseline": 3,
@@ -173,6 +173,13 @@
       "rule": "max-lines-per-function",
       "commit": "c152f478df39a7f5ae0f5664a9b0dc81731534af",
       "at": "2026-09-09T01:16:44.011Z"
+    },
+    {
+      "kind": "drained",
+      "text": "toMessage/entrySlot for number and unknown interpolations",
+      "rule": "@typescript-eslint/restrict-template-expressions",
+      "commit": "d7474d81580afad39daed0a5a80ec081465771ec",
+      "at": "2026-09-09T01:18:28.221Z"
     }
   ]
 }

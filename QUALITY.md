@@ -5,7 +5,7 @@ Maintained by [ever-better](https://github.com/isamu/ever-better). Numbers are r
 
 - Phase: **drain**
 - Frozen: 2026-09-09T01:10:05.550Z
-- Open violations: **48**
+- Open violations: **27**
 - Rules improved since the ceiling: **0**
 - Everything is at or below its ceiling.
 
@@ -16,7 +16,7 @@ Top to bottom. An unattended run works this list and nothing else.
 - [x] **P0 diagnose** — taken 2026-09-09T01:10:27.426Z
 - [ ] **P1 bootstrap** — 1 gap(s) still open
 - [x] **P2 freeze** — frozen 2026-09-09T01:10:05.550Z
-- [ ] **P3 drain** — 48 violations across 6 rules
+- [ ] **P3 drain** — 27 violations across 5 rules
   - [ ] `@typescript-eslint/no-unsafe-call` — 1 left
   - [ ] `@typescript-eslint/restrict-plus-operands` — 1 left
   - [ ] `@typescript-eslint/triple-slash-reference` — 1 left
@@ -32,7 +32,6 @@ Ceiling is the count at the last freeze. It may fall and must never rise.
 | Rule | Ceiling | Now | Change | Status |
 | --- | ---: | ---: | ---: | --- |
 | `@typescript-eslint/no-unsafe-member-access` | 21 | 21 | 0 | draining |
-| `@typescript-eslint/restrict-template-expressions` | 21 | 21 | 0 | draining |
 | `@typescript-eslint/no-unsafe-argument` | 3 | 3 | 0 | draining |
 | `@typescript-eslint/no-unsafe-call` | 1 | 1 | 0 | draining |
 | `@typescript-eslint/restrict-plus-operands` | 1 | 1 | 0 | draining |
@@ -59,6 +58,7 @@ Ceiling is the count at the last freeze. It may fall and must never rise.
 
 | Date | Commit | Kind | Rule | What |
 | --- | --- | --- | --- | --- |
+| 2026-09-09 | d7474d81 | drained | @typescript-eslint/restrict-template-expressions | toMessage/entrySlot for number and unknown interpolations |
 | 2026-09-09 | c152f478 | drained | max-lines-per-function | split parsePolitician into parseMeta + parseEntry |
 | 2026-09-09 | 0d55217d | drained | @typescript-eslint/consistent-type-assertions | replaced 4 assertions with isLabel/isSourceType guards |
 | 2026-09-09 | caf47b35 | drained | @typescript-eslint/no-base-to-string | formatDietSession: string|number only; objects no longer become [object Object] |

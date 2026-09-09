@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { formatDietSession, isLabel, isSourceType } from "./yaml-values";
+import { entrySlot, formatDietSession, isLabel, isSourceType } from "./yaml-values";
 import type { Entry, Politician, PoliticianMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
@@ -63,33 +63,34 @@ function parseMeta(raw: unknown): PoliticianMeta | undefined {
 }
 
 function parseEntry(raw: unknown, index: number, filePath: string): Entry {
+  const slot = entrySlot(index);
   if (!isRecord(raw)) {
-    throw new Error(`entries[${index}] must be an object in ${filePath}`);
+    throw new Error(`${slot} must be an object in ${filePath}`);
   }
   const claim = raw.claim;
   const action = raw.action;
   if (!isRecord(claim) || !isRecord(action)) {
-    throw new Error(`entries[${index}] needs claim and action in ${filePath}`);
+    throw new Error(`${slot} needs claim and action in ${filePath}`);
   }
   const label = raw.label;
   if (!isLabel(label)) {
-    throw new Error(`Invalid label in entries[${index}] of ${filePath}`);
+    throw new Error(`Invalid label in ${slot} of ${filePath}`);
   }
 
   return {
-    id: asString(raw.id, `entries[${index}].id`),
-    topic: asString(raw.topic, `entries[${index}].topic`),
+    id: asString(raw.id, `${slot}.id`),
+    topic: asString(raw.topic, `${slot}.topic`),
     claim: {
-      summary: asString(claim.summary, `entries[${index}].claim.summary`),
+      summary: asString(claim.summary, `${slot}.claim.summary`),
       date: asOptionalString(claim.date),
       source_url: typeof claim.source_url === "string" ? claim.source_url : "",
-      source_type: asSourceType(claim.source_type, `entries[${index}].claim`),
+      source_type: asSourceType(claim.source_type, `${slot}.claim`),
     },
     action: {
-      summary: asString(action.summary, `entries[${index}].action.summary`),
+      summary: asString(action.summary, `${slot}.action.summary`),
       date: asOptionalString(action.date),
       source_url: typeof action.source_url === "string" ? action.source_url : "",
-      source_type: asSourceType(action.source_type, `entries[${index}].action`),
+      source_type: asSourceType(action.source_type, `${slot}.action`),
       diet_session: formatDietSession(action.diet_session),
     },
     label,
