@@ -3,7 +3,9 @@ import {
   actionKindLabel,
   actionSideHeading,
   affiliationLine,
+  countCardClassName,
   countLabels,
+  formatLabelCounts,
   isSittingMember,
   labelClassName,
   officeStatusLabel,
@@ -11,7 +13,7 @@ import {
   sourceTypeLabel,
   topicLabel,
 } from "../src/lib/labels";
-import { ACTION_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "../src/lib/types";
+import { ACTION_KINDS, CLAIM_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "../src/lib/types";
 import type { Entry, Politician } from "../src/lib/types";
 
 function sampleEntry(label: Entry["label"]): Entry {
@@ -32,19 +34,27 @@ function sampleEntry(label: Entry["label"]): Entry {
 }
 
 describe("言行 labels", () => {
-  it("exposes only 一致 / ズレ / 不明", () => {
-    expect(LABELS).toEqual(["一致", "ズレ", "不明"]);
+  it("exposes only 過程一致 / 結果到達 / ズレ / 不明", () => {
+    expect(LABELS).toEqual(["過程一致", "結果到達", "ズレ", "不明"]);
   });
 
-  it("counts each label independently", () => {
-    const counts = countLabels([sampleEntry("一致"), sampleEntry("一致"), sampleEntry("不明")]);
-    expect(counts).toEqual({ 一致: 2, ズレ: 0, 不明: 1 });
+  it("counts each label independently without merging matches", () => {
+    const counts = countLabels([sampleEntry("過程一致"), sampleEntry("結果到達"), sampleEntry("過程一致"), sampleEntry("不明")]);
+    expect(counts).toEqual({ 過程一致: 2, 結果到達: 1, ズレ: 0, 不明: 1 });
+    expect(formatLabelCounts(counts)).toBe("2 過程一致 / 1 結果到達 / 0 ズレ / 1 不明");
   });
 
   it("maps labels to CSS class names", () => {
-    expect(labelClassName("一致")).toBe("label-match");
+    expect(labelClassName("過程一致")).toBe("label-process");
+    expect(labelClassName("結果到達")).toBe("label-outcome");
     expect(labelClassName("ズレ")).toBe("label-gap");
     expect(labelClassName("不明")).toBe("label-unknown");
+    expect(countCardClassName("過程一致")).toBe("process");
+    expect(countCardClassName("結果到達")).toBe("outcome");
+  });
+
+  it("exposes hard and soft claim kinds", () => {
+    expect(CLAIM_KINDS).toEqual(["hard", "soft"]);
   });
 
   it("maps every source type", () => {

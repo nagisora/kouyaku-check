@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDietSession, isActionKind, isLabel, isOfficeStatus, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
+import { formatDietSession, isActionKind, isClaimKind, isLabel, isOfficeStatus, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
 
 describe("formatDietSession", () => {
   it("keeps empty values as null", () => {
@@ -19,12 +19,23 @@ describe("formatDietSession", () => {
 });
 
 describe("isLabel", () => {
-  it("accepts only 一致 / ズレ / 不明", () => {
-    expect(isLabel("一致")).toBe(true);
+  it("accepts only 過程一致 / 結果到達 / ズレ / 不明", () => {
+    expect(isLabel("過程一致")).toBe(true);
+    expect(isLabel("結果到達")).toBe(true);
     expect(isLabel("ズレ")).toBe(true);
     expect(isLabel("不明")).toBe(true);
+    expect(isLabel("一致")).toBe(false);
     expect(isLabel("信頼")).toBe(false);
     expect(isLabel(1)).toBe(false);
+  });
+});
+
+describe("isClaimKind", () => {
+  it("accepts only hard and soft", () => {
+    expect(isClaimKind("hard")).toBe(true);
+    expect(isClaimKind("soft")).toBe(true);
+    expect(isClaimKind("medium")).toBe(false);
+    expect(isClaimKind("一致")).toBe(false);
   });
 });
 

@@ -2,8 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { entrySlot, formatDietSession, isActionKind, isLabel, isOfficeStatus, isSourceType } from "./yaml-values";
-import type { Action, Claim, Entry, OfficeStatus, Politician, PoliticianMeta } from "./types";
+import { entrySlot, formatDietSession, isActionKind, isClaimKind, isLabel, isOfficeStatus, isSourceType } from "./yaml-values";
+import type { Action, Claim, ClaimKind, Entry, OfficeStatus, Politician, PoliticianMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -93,6 +93,16 @@ function parseActionKind(value: unknown, field: string) {
   return value;
 }
 
+function parseClaimKind(value: unknown, field: string): ClaimKind | undefined {
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+  if (!isClaimKind(value)) {
+    throw new Error(`Invalid claim_kind for ${field}`);
+  }
+  return value;
+}
+
 function parseAction(raw: Record<string, unknown>, slot: string): Action {
   const actionKind = parseActionKind(raw.action_kind, `${slot}.action`);
   return {
@@ -119,6 +129,7 @@ function parseEntry(raw: unknown, index: number, filePath: string): Entry {
   if (!isLabel(label)) {
     throw new Error(`Invalid label in ${slot} of ${filePath}`);
   }
+  const claimKind = parseClaimKind(raw.claim_kind, `${slot}.claim_kind`);
 
   return {
     id: asString(raw.id, `${slot}.id`),
@@ -126,6 +137,7 @@ function parseEntry(raw: unknown, index: number, filePath: string): Entry {
     claim: parseClaim(claim, slot),
     action: parseAction(action, slot),
     label,
+    ...(claimKind === undefined ? {} : { claim_kind: claimKind }),
     notes: typeof raw.notes === "string" ? raw.notes : "",
   };
 }

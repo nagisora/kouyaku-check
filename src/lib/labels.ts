@@ -1,26 +1,66 @@
 import type { ActionKind, Entry, Label, LabelCounts, OfficeStatus, Politician, SourceType } from "./types";
+import { toMessage } from "./yaml-values";
 
-export function countLabels(entries: Entry[]): LabelCounts {
-  const counts: LabelCounts = { 一致: 0, ズレ: 0, 不明: 0 };
-  for (const entry of entries) {
-    counts[entry.label] += 1;
-  }
-  return counts;
+function emptyLabelCounts(): LabelCounts {
+  return { 過程一致: 0, 結果到達: 0, ズレ: 0, 不明: 0 };
 }
 
-export function labelClassName(label: Label): string {
+function incrementLabelCount(counts: LabelCounts, label: Label): void {
   switch (label) {
-    case "一致":
-      return "label-match";
+    case "過程一致":
+      counts.過程一致 += 1;
+      return;
+    case "結果到達":
+      counts.結果到達 += 1;
+      return;
     case "ズレ":
-      return "label-gap";
+      counts.ズレ += 1;
+      return;
     case "不明":
-      return "label-unknown";
+      counts.不明 += 1;
+      return;
     default: {
       const _exhaustive: never = label;
       return _exhaustive;
     }
   }
+}
+
+export function countLabels(entries: Entry[]): LabelCounts {
+  const counts = emptyLabelCounts();
+  for (const entry of entries) {
+    incrementLabelCount(counts, entry.label);
+  }
+  return counts;
+}
+
+export function formatLabelCounts(counts: LabelCounts): string {
+  return `${toMessage(counts.過程一致)} 過程一致 / ${toMessage(counts.結果到達)} 結果到達 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`;
+}
+
+function labelTone(label: Label): "process" | "outcome" | "gap" | "unknown" {
+  switch (label) {
+    case "過程一致":
+      return "process";
+    case "結果到達":
+      return "outcome";
+    case "ズレ":
+      return "gap";
+    case "不明":
+      return "unknown";
+    default: {
+      const _exhaustive: never = label;
+      return _exhaustive;
+    }
+  }
+}
+
+export function labelClassName(label: Label): string {
+  return `label-${labelTone(label)}`;
+}
+
+export function countCardClassName(label: Label): string {
+  return labelTone(label);
 }
 
 export function sourceTypeLabel(sourceType: SourceType): string {

@@ -1,5 +1,5 @@
-import { ACTION_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "./types";
-import type { ActionKind, Label, OfficeStatus, SourceType } from "./types";
+import { ACTION_KINDS, CLAIM_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "./types";
+import type { ActionKind, ClaimKind, Label, OfficeStatus, SourceType } from "./types";
 
 export function formatDietSession(value: unknown): string | null {
   if (value === null || value === undefined) {
@@ -16,6 +16,10 @@ export function formatDietSession(value: unknown): string | null {
 
 export function isLabel(value: unknown): value is Label {
   return typeof value === "string" && LABELS.some((item) => item === value);
+}
+
+export function isClaimKind(value: unknown): value is ClaimKind {
+  return typeof value === "string" && CLAIM_KINDS.some((item) => item === value);
 }
 
 export function isSourceType(value: unknown): value is SourceType {

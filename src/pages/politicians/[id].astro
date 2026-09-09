@@ -4,6 +4,7 @@ import {
   actionKindLabel,
   actionSideHeading,
   affiliationLine,
+  countCardClassName,
   countLabels,
   isSittingMember,
   labelClassName,
@@ -13,7 +14,7 @@ import {
   topicLabel,
 } from "../../lib/labels";
 import { loadPoliticians, politicianRoutes } from "../../lib/politicians";
-import type { Politician } from "../../lib/types";
+import { LABELS, type Politician } from "../../lib/types";
 
 export function getStaticPaths() {
   return loadPoliticians().flatMap((politician) =>
@@ -49,7 +50,7 @@ function formatSession(value: string | number | null): string | null {
 
 <BaseLayout
   title={`${politician.name} — 公約チェック`}
-  description={`${politician.name}（${politician.party}）の発言と国会行動の対照。一致・ズレ・不明のみ。`}
+  description={`${politician.name}（${politician.party}）の発言と国会行動の対照。過程一致・結果到達・ズレ・不明のみ。`}
   current="politician"
 >
   {
@@ -88,18 +89,14 @@ function formatSession(value: string | number | null): string | null {
   <p class="window-note">{windowNote} 観察期間：{politician.window.from} 〜 {windowTo}。</p>
 
   <section class="count-row" aria-label="ラベル件数">
-    <div class="count-card match">
-      <strong>{counts.一致}</strong>
-      <span>一致</span>
-    </div>
-    <div class="count-card gap">
-      <strong>{counts.ズレ}</strong>
-      <span>ズレ</span>
-    </div>
-    <div class="count-card unknown">
-      <strong>{counts.不明}</strong>
-      <span>不明</span>
-    </div>
+    {
+      LABELS.map((label) => (
+        <div class:list={["count-card", countCardClassName(label)]}>
+          <strong>{counts[label]}</strong>
+          <span>{label}</span>
+        </div>
+      ))
+    }
   </section>
 
   <section class="entry-list" aria-label="対照一覧">

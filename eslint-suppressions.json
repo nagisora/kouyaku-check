@@ -1,18 +1,4 @@
 {
-  "scripts/validate-data.mjs": {
-    "@typescript-eslint/no-unsafe-argument": {
-      "count": 3
-    },
-    "@typescript-eslint/no-unsafe-call": {
-      "count": 1
-    },
-    "@typescript-eslint/no-unsafe-member-access": {
-      "count": 21
-    },
-    "@typescript-eslint/restrict-plus-operands": {
-      "count": 1
-    }
-  },
   "src/env.d.ts": {
     "@typescript-eslint/triple-slash-reference": {
       "count": 1
