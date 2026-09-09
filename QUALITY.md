@@ -25,6 +25,14 @@ Top to bottom. An unattended run works this list and nothing else.
 - [ ] **P4 tighten** — add the next rule tier, then freeze and drain again
 - [ ] **P5 duplication and dead code** — report-only scans; extraction is judgment, not a threshold
 
+## Carried over
+
+Refactors left undone, with the commit each was seen at. Re-check before acting on an old one.
+
+- [ ] `@typescript-eslint/triple-slash-reference` — src/env.d.ts is Astro's required /// <reference path>. Converting to import may break astro check. Preferred: keep grandfathered until Astro generates a stub ESLint accepts.  _(2026-09-09, 7b6d0bc6)_
+- [ ] `@typescript-eslint/no-unsafe-member-access` — Remaining 26 unsafe-* / restrict-plus live in scripts/validate-data.mjs (untyped). Migrating that file to TS is tighten. A one-line .entries() rewrite raised new member-access above the ceiling; reverted.  _(2026-09-09, 7b6d0bc6)_
+- [ ] `framework-files` — Astro ESLint gap: do not invent a plugin stack. Prefer wait for ever-better. GitHub issue could not be created (token has no issues:write).  _(2026-09-09, 7b6d0bc6)_
+
 ## Ratchet
 
 Ceiling is the count at the last freeze. It may fall and must never rise.
@@ -58,6 +66,9 @@ Ceiling is the count at the last freeze. It may fall and must never rise.
 
 | Date | Commit | Kind | Rule | What |
 | --- | --- | --- | --- | --- |
+| 2026-09-09 | 7b6d0bc6 | deferred | framework-files | Astro ESLint gap: do not invent a plugin stack. Prefer wait for ever-better. GitHub issue could not be created (token has no issues:write). |
+| 2026-09-09 | 7b6d0bc6 | deferred | @typescript-eslint/no-unsafe-member-access | Remaining 26 unsafe-* / restrict-plus live in scripts/validate-data.mjs (untyped). Migrating that file to TS is tighten. A one-line .entries() rewrite raised new member-access above the ceiling; reverted. |
+| 2026-09-09 | 7b6d0bc6 | deferred | @typescript-eslint/triple-slash-reference | src/env.d.ts is Astro's required /// <reference path>. Converting to import may break astro check. Preferred: keep grandfathered until Astro generates a stub ESLint accepts. |
 | 2026-09-09 | d7474d81 | drained | @typescript-eslint/restrict-template-expressions | toMessage/entrySlot for number and unknown interpolations |
 | 2026-09-09 | c152f478 | drained | max-lines-per-function | split parsePolitician into parseMeta + parseEntry |
 | 2026-09-09 | 0d55217d | drained | @typescript-eslint/consistent-type-assertions | replaced 4 assertions with isLabel/isSourceType guards |
