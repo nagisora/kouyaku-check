@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:14:35.144Z",
+  "updatedAt": "2026-09-09T01:15:44.014Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -106,9 +106,9 @@
       "status": "draining"
     },
     "@typescript-eslint/consistent-type-assertions": {
-      "baseline": 4,
-      "current": 4,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     },
     "max-lines-per-function": {
       "baseline": 1,
@@ -159,6 +159,13 @@
       "rule": "@typescript-eslint/no-base-to-string",
       "commit": "caf47b3554211ac43fb05091bdcae6789b4bf333",
       "at": "2026-09-09T01:14:35.143Z"
+    },
+    {
+      "kind": "drained",
+      "text": "replaced 4 assertions with isLabel/isSourceType guards",
+      "rule": "@typescript-eslint/consistent-type-assertions",
+      "commit": "0d55217d4feffa74386cd5644862761a913f2678",
+      "at": "2026-09-09T01:15:44.013Z"
     }
   ]
 }

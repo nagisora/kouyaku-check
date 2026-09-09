@@ -2,9 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { formatDietSession } from "./yaml-values";
+import { formatDietSession, isLabel, isSourceType } from "./yaml-values";
 import type { Politician } from "./types";
-import { LABELS, SOURCE_TYPES } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -45,10 +44,10 @@ function asOptionalString(value: unknown): string | null {
 }
 
 function asSourceType(value: unknown, field: string) {
-  if (typeof value !== "string" || !SOURCE_TYPES.includes(value as (typeof SOURCE_TYPES)[number])) {
+  if (!isSourceType(value)) {
     throw new Error(`Invalid source_type for ${field}: ${String(value)}`);
   }
-  return value as (typeof SOURCE_TYPES)[number];
+  return value;
 }
 
 function parsePolitician(raw: unknown, filePath: string): Politician {
@@ -100,7 +99,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
         throw new Error(`entries[${index}] needs claim and action in ${filePath}`);
       }
       const label = entry.label;
-      if (typeof label !== "string" || !LABELS.includes(label as (typeof LABELS)[number])) {
+      if (!isLabel(label)) {
         throw new Error(`Invalid label in entries[${index}] of ${filePath}`);
       }
 
@@ -120,7 +119,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
           source_type: asSourceType(action.source_type, `entries[${index}].action`),
           diet_session: formatDietSession(action.diet_session),
         },
-        label: label as (typeof LABELS)[number],
+        label,
         notes: typeof entry.notes === "string" ? entry.notes : "",
       };
     }),
