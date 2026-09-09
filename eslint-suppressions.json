@@ -40,10 +40,5 @@
     "sonarjs/no-alphabetical-sort": {
       "count": 1
     }
-  },
-  "src/lib/types.ts": {
-    "@typescript-eslint/consistent-type-definitions": {
-      "count": 6
-    }
   }
 }

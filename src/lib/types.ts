@@ -4,43 +4,43 @@ export type Label = (typeof LABELS)[number];
 export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none"] as const;
 export type SourceType = (typeof SOURCE_TYPES)[number];
 
-export type Claim = {
+export interface Claim {
   summary: string;
   date: string | null;
   source_url: string;
   source_type: SourceType;
-};
+}
 
-export type Action = {
+export interface Action {
   summary: string;
   date: string | null;
   source_url: string;
   source_type: SourceType;
   diet_session: string | number | null;
-};
+}
 
-export type Entry = {
+export interface Entry {
   id: string;
   topic: string;
   claim: Claim;
   action: Action;
   label: Label;
   notes: string;
-};
+}
 
-export type PoliticianWindow = {
+export interface PoliticianWindow {
   from: string;
   to: string | null;
-};
+}
 
-export type PoliticianMeta = {
+export interface PoliticianMeta {
   wikidata?: string;
   elected_on?: string;
   in_office_from?: string;
   window_note?: string;
-};
+}
 
-export type Politician = {
+export interface Politician {
   id: string;
   slug?: string;
   name: string;
@@ -52,6 +52,6 @@ export type Politician = {
   window: PoliticianWindow;
   meta?: PoliticianMeta;
   entries: Entry[];
-};
+}
 
 export type LabelCounts = Record<Label, number>;

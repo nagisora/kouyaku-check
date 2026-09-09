@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:10:27.427Z",
+  "updatedAt": "2026-09-09T01:12:30.976Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -121,9 +121,9 @@
       "status": "draining"
     },
     "@typescript-eslint/consistent-type-definitions": {
-      "baseline": 6,
-      "current": 6,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     }
   },
   "counters": {
@@ -138,6 +138,13 @@
       "text": "ever-better 0.5.0 bootstrap: prettier + eslint 10 + vitest + knip + gitleaks CI. typecheck is astro check because tsc cannot read .astro. id-length exceptions for 一致/ズレ/不明. No eslint-plugin-astro (upstream gap).",
       "commit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
       "at": "2026-09-09T01:10:12.387Z"
+    },
+    {
+      "kind": "drained",
+      "text": "6 type aliases -> interface in src/lib/types.ts; runtime unchanged",
+      "rule": "@typescript-eslint/consistent-type-definitions",
+      "commit": "f9dd939706ff7623b0a3e8450caae4549d6ce449",
+      "at": "2026-09-09T01:12:30.976Z"
     }
   ]
 }
