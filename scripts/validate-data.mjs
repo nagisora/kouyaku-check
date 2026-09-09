@@ -28,10 +28,30 @@ function asText(value) {
   return "";
 }
 
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
+function toMessage(value) {
+  if (typeof value === "string") {
+    return value;
+  }
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return String(value);
+  }
+  if (typeof value === "boolean") {
+    return value ? "true" : "false";
+  }
+  if (value === null || value === undefined) {
+    return "";
+  }
+  return typeof value;
+}
+
 const files = fs
   .readdirSync(DATA_DIR)
   .filter((name) => name.endsWith(".yaml") || name.endsWith(".yml"))
-  .sort();
+  .sort((left, right) => left.localeCompare(right));
 
 if (files.length === 0) {
   fail("No politician YAML files found.");
@@ -71,41 +91,42 @@ for (const fileName of files) {
   const ids = new Set();
 
   for (const [index, entry] of raw.entries.entries()) {
+    const slot = `entries[${toMessage(index)}]`;
     if (!isRecord(entry) || !isRecord(entry.claim) || !isRecord(entry.action)) {
-      fail(`${fileName}: entries[${index}] needs claim and action`);
+      fail(`${fileName}: ${slot} needs claim and action`);
       continue;
     }
     if (ids.has(entry.id)) {
-      fail(`${fileName}: duplicate entry id ${entry.id}`);
+      fail(`${fileName}: duplicate entry id ${toMessage(entry.id)}`);
     }
     ids.add(entry.id);
     if (!LABELS.has(entry.label)) {
-      fail(`${fileName}: invalid label at ${entry.id}`);
+      fail(`${fileName}: invalid label at ${toMessage(entry.id)}`);
     } else {
       counts[entry.label] += 1;
     }
     if (!SOURCE_TYPES.has(entry.claim.source_type) || !SOURCE_TYPES.has(entry.action.source_type)) {
-      fail(`${fileName}: invalid source_type at ${entry.id}`);
+      fail(`${fileName}: invalid source_type at ${toMessage(entry.id)}`);
     }
     if (typeof entry.claim.summary !== "string" || entry.claim.summary.length > 60) {
-      fail(`${fileName}: claim.summary must be a short paraphrase at ${entry.id}`);
+      fail(`${fileName}: claim.summary must be a short paraphrase at ${toMessage(entry.id)}`);
     }
     if (typeof entry.action.summary !== "string" || entry.action.summary.length > 60) {
-      fail(`${fileName}: action.summary must be a short paraphrase at ${entry.id}`);
+      fail(`${fileName}: action.summary must be a short paraphrase at ${toMessage(entry.id)}`);
     }
   }
 
   if (raw.id === "hc-7025005") {
     listedAnno = true;
     if (counts.一致 !== 9 || counts.ズレ !== 0 || counts.不明 !== 3) {
-      fail(`${fileName}: expected 9 一致 / 0 ズレ / 3 不明, got ${counts.一致} / ${counts.ズレ} / ${counts.不明}`);
+      fail(`${fileName}: expected 9 一致 / 0 ズレ / 3 不明, got ${toMessage(counts.一致)} / ${toMessage(counts.ズレ)} / ${toMessage(counts.不明)}`);
     }
     if (raw.entries.length !== 12) {
       fail(`${fileName}: expected 12 entries`);
     }
   }
 
-  console.log(`${fileName}: ${counts.一致} 一致 / ${counts.ズレ} ズレ / ${counts.不明} 不明`);
+  console.log(`${fileName}: ${toMessage(counts.一致)} 一致 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`);
 }
 
 if (!listedAnno) {

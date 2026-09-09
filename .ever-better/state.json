@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "tool": "ever-better",
+  "phase": "drain",
+  "updatedAt": "2026-09-09T01:19:59.554Z",
+  "frozenAt": "2026-09-09T01:10:05.550Z",
+  "diagnosedAt": "2026-09-09T01:10:27.426Z",
+  "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
+  "diagnosis": {
+    "packageManager": "pnpm",
+    "language": "mixed",
+    "framework": "astro",
+    "runtime": "both",
+    "typescriptFileRatio": 0.8333333333333334,
+    "tooling": {
+      "eslint": "flat",
+      "prettier": true,
+      "testRunner": "vitest",
+      "knip": true,
+      "jscpd": true,
+      "secretScanning": true,
+      "agentInstructions": [
+        "CLAUDE.md"
+      ]
+    },
+    "scripts": {
+      "lint": true,
+      "format": true,
+      "build": true,
+      "typecheck": true,
+      "test": true
+    },
+    "ci": {
+      "present": true,
+      "runners": [
+        "macos-latest",
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "runsLint": true,
+      "runsTest": true,
+      "runsBuild": true,
+      "runsTypecheck": true,
+      "runsEverBetterCheck": true
+    },
+    "sizes": {
+      "total": 12,
+      "overFileLimit": 0,
+      "largest": []
+    },
+    "gaps": [
+      {
+        "id": "typescript-partial",
+        "title": "Only 83% of sources are TypeScript",
+        "detail": "The type-aware rules cover the typed part only, so the remaining .js files are the blind spot the counts will not show.",
+        "phase": "tighten"
+      },
+      {
+        "id": "framework-files",
+        "title": ".astro files are not linted",
+        "detail": "The generated config covers .ts and .js only for this framework, so those files pass by being skipped. Add the framework's ESLint plugin before freezing, or the baseline records a number that ignores half the repo.",
+        "phase": "bootstrap"
+      },
+      {
+        "id": "tsconfig-strictness",
+        "title": "2 strictness flags `strict` does not include are off",
+        "detail": "Measured with `tsc --showConfig`, after every extends: exactOptionalPropertyTypes, noPropertyAccessFromIndexSignature. Type errors have no suppression mechanism, so enable them one at a time and measure the cost first.",
+        "phase": "tighten"
+      }
+    ]
+  },
+  "rules": {
+    "sonarjs/no-alphabetical-sort": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    },
+    "@typescript-eslint/no-unsafe-member-access": {
+      "baseline": 21,
+      "current": 21,
+      "status": "draining"
+    },
+    "@typescript-eslint/no-unsafe-call": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/restrict-template-expressions": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    },
+    "@typescript-eslint/no-unsafe-argument": {
+      "baseline": 3,
+      "current": 3,
+      "status": "draining"
+    },
+    "@typescript-eslint/restrict-plus-operands": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/triple-slash-reference": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/consistent-type-assertions": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    },
+    "max-lines-per-function": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    },
+    "@typescript-eslint/no-base-to-string": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    },
+    "@typescript-eslint/consistent-type-definitions": {
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
+    }
+  },
+  "counters": {
+    "eslint:warnings": {
+      "baseline": 4,
+      "current": 4
+    }
+  },
+  "log": [
+    {
+      "kind": "note",
+      "text": "ever-better 0.5.0 bootstrap: prettier + eslint 10 + vitest + knip + gitleaks CI. typecheck is astro check because tsc cannot read .astro. id-length exceptions for 一致/ズレ/不明. No eslint-plugin-astro (upstream gap).",
+      "commit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
+      "at": "2026-09-09T01:10:12.387Z"
+    },
+    {
+      "kind": "drained",
+      "text": "6 type aliases -> interface in src/lib/types.ts; runtime unchanged",
+      "rule": "@typescript-eslint/consistent-type-definitions",
+      "commit": "f9dd939706ff7623b0a3e8450caae4549d6ce449",
+      "at": "2026-09-09T01:12:30.976Z"
+    },
+    {
+      "kind": "drained",
+      "text": "2 .sort() calls now localeCompare via compareFileNames",
+      "rule": "sonarjs/no-alphabetical-sort",
+      "commit": "014b592c97389e9140b9a6b8048598867d43373c",
+      "at": "2026-09-09T01:13:40.934Z"
+    },
+    {
+      "kind": "drained",
+      "text": "formatDietSession: string|number only; objects no longer become [object Object]",
+      "rule": "@typescript-eslint/no-base-to-string",
+      "commit": "caf47b3554211ac43fb05091bdcae6789b4bf333",
+      "at": "2026-09-09T01:14:35.143Z"
+    },
+    {
+      "kind": "drained",
+      "text": "replaced 4 assertions with isLabel/isSourceType guards",
+      "rule": "@typescript-eslint/consistent-type-assertions",
+      "commit": "0d55217d4feffa74386cd5644862761a913f2678",
+      "at": "2026-09-09T01:15:44.013Z"
+    },
+    {
+      "kind": "drained",
+      "text": "split parsePolitician into parseMeta + parseEntry",
+      "rule": "max-lines-per-function",
+      "commit": "c152f478df39a7f5ae0f5664a9b0dc81731534af",
+      "at": "2026-09-09T01:16:44.011Z"
+    },
+    {
+      "kind": "drained",
+      "text": "toMessage/entrySlot for number and unknown interpolations",
+      "rule": "@typescript-eslint/restrict-template-expressions",
+      "commit": "d7474d81580afad39daed0a5a80ec081465771ec",
+      "at": "2026-09-09T01:18:28.221Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "src/env.d.ts is Astro's required /// <reference path>. Converting to import may break astro check. Preferred: keep grandfathered until Astro generates a stub ESLint accepts.",
+      "rule": "@typescript-eslint/triple-slash-reference",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:57.936Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "Remaining 26 unsafe-* / restrict-plus live in scripts/validate-data.mjs (untyped). Migrating that file to TS is tighten. A one-line .entries() rewrite raised new member-access above the ceiling; reverted.",
+      "rule": "@typescript-eslint/no-unsafe-member-access",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:58.746Z"
+    },
+    {
+      "kind": "deferred",
+      "text": "Astro ESLint gap: do not invent a plugin stack. Prefer wait for ever-better. GitHub issue could not be created (token has no issues:write).",
+      "rule": "framework-files",
+      "commit": "7b6d0bc6ca5f2082cdf6ee96e17c1f499b9481e9",
+      "at": "2026-09-09T01:19:59.553Z"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
-import type { Politician } from "./types";
-import { LABELS, SOURCE_TYPES } from "./types";
+import { compareFileNames } from "./file-names";
+import { entrySlot, formatDietSession, isLabel, isSourceType } from "./yaml-values";
+import type { Entry, Politician, PoliticianMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -43,10 +44,58 @@ function asOptionalString(value: unknown): string | null {
 }
 
 function asSourceType(value: unknown, field: string) {
-  if (typeof value !== "string" || !SOURCE_TYPES.includes(value as (typeof SOURCE_TYPES)[number])) {
+  if (!isSourceType(value)) {
     throw new Error(`Invalid source_type for ${field}: ${String(value)}`);
   }
-  return value as (typeof SOURCE_TYPES)[number];
+  return value;
+}
+
+function parseMeta(raw: unknown): PoliticianMeta | undefined {
+  if (!isRecord(raw)) {
+    return undefined;
+  }
+  return {
+    wikidata: typeof raw.wikidata === "string" ? raw.wikidata : undefined,
+    elected_on: typeof raw.elected_on === "string" ? raw.elected_on : undefined,
+    in_office_from: typeof raw.in_office_from === "string" ? raw.in_office_from : undefined,
+    window_note: typeof raw.window_note === "string" ? raw.window_note : undefined,
+  };
+}
+
+function parseEntry(raw: unknown, index: number, filePath: string): Entry {
+  const slot = entrySlot(index);
+  if (!isRecord(raw)) {
+    throw new Error(`${slot} must be an object in ${filePath}`);
+  }
+  const claim = raw.claim;
+  const action = raw.action;
+  if (!isRecord(claim) || !isRecord(action)) {
+    throw new Error(`${slot} needs claim and action in ${filePath}`);
+  }
+  const label = raw.label;
+  if (!isLabel(label)) {
+    throw new Error(`Invalid label in ${slot} of ${filePath}`);
+  }
+
+  return {
+    id: asString(raw.id, `${slot}.id`),
+    topic: asString(raw.topic, `${slot}.topic`),
+    claim: {
+      summary: asString(claim.summary, `${slot}.claim.summary`),
+      date: asOptionalString(claim.date),
+      source_url: typeof claim.source_url === "string" ? claim.source_url : "",
+      source_type: asSourceType(claim.source_type, `${slot}.claim`),
+    },
+    action: {
+      summary: asString(action.summary, `${slot}.action.summary`),
+      date: asOptionalString(action.date),
+      source_url: typeof action.source_url === "string" ? action.source_url : "",
+      source_type: asSourceType(action.source_type, `${slot}.action`),
+      diet_session: formatDietSession(action.diet_session),
+    },
+    label,
+    notes: typeof raw.notes === "string" ? raw.notes : "",
+  };
 }
 
 function parsePolitician(raw: unknown, filePath: string): Politician {
@@ -64,16 +113,6 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
     throw new Error(`entries must be an array in ${filePath}`);
   }
 
-  const metaRaw = raw.meta;
-  const meta = isRecord(metaRaw)
-    ? {
-        wikidata: typeof metaRaw.wikidata === "string" ? metaRaw.wikidata : undefined,
-        elected_on: typeof metaRaw.elected_on === "string" ? metaRaw.elected_on : undefined,
-        in_office_from: typeof metaRaw.in_office_from === "string" ? metaRaw.in_office_from : undefined,
-        window_note: typeof metaRaw.window_note === "string" ? metaRaw.window_note : undefined,
-      }
-    : undefined;
-
   return {
     id: asString(raw.id, "id"),
     slug: typeof raw.slug === "string" ? raw.slug : undefined,
@@ -87,41 +126,8 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
       from: asString(windowRaw.from, "window.from"),
       to: asOptionalString(windowRaw.to),
     },
-    meta,
-    entries: entriesRaw.map((entry, index) => {
-      if (!isRecord(entry)) {
-        throw new Error(`entries[${index}] must be an object in ${filePath}`);
-      }
-      const claim = entry.claim;
-      const action = entry.action;
-      if (!isRecord(claim) || !isRecord(action)) {
-        throw new Error(`entries[${index}] needs claim and action in ${filePath}`);
-      }
-      const label = entry.label;
-      if (typeof label !== "string" || !LABELS.includes(label as (typeof LABELS)[number])) {
-        throw new Error(`Invalid label in entries[${index}] of ${filePath}`);
-      }
-
-      return {
-        id: asString(entry.id, `entries[${index}].id`),
-        topic: asString(entry.topic, `entries[${index}].topic`),
-        claim: {
-          summary: asString(claim.summary, `entries[${index}].claim.summary`),
-          date: asOptionalString(claim.date),
-          source_url: typeof claim.source_url === "string" ? claim.source_url : "",
-          source_type: asSourceType(claim.source_type, `entries[${index}].claim`),
-        },
-        action: {
-          summary: asString(action.summary, `entries[${index}].action.summary`),
-          date: asOptionalString(action.date),
-          source_url: typeof action.source_url === "string" ? action.source_url : "",
-          source_type: asSourceType(action.source_type, `entries[${index}].action`),
-          diet_session: action.diet_session === null || action.diet_session === undefined ? null : String(action.diet_session),
-        },
-        label: label as (typeof LABELS)[number],
-        notes: typeof entry.notes === "string" ? entry.notes : "",
-      };
-    }),
+    meta: parseMeta(raw.meta),
+    entries: entriesRaw.map((entry, index) => parseEntry(entry, index, filePath)),
   };
 }
 
@@ -133,7 +139,7 @@ export function loadPoliticians(): Politician[] {
   const files = fs
     .readdirSync(DATA_DIR)
     .filter((name: string) => name.endsWith(".yaml") || name.endsWith(".yml"))
-    .sort();
+    .sort(compareFileNames);
 
   return files.map((fileName: string) => {
     const filePath = path.join(DATA_DIR, fileName);
