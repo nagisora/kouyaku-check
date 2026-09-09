@@ -3,6 +3,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
+// Every *.yaml is shape-checked. Per-file label counts are pinned only where a ledger must not drift.
 const LABELS = new Set(["一致", "ズレ", "不明"]);
 const SOURCE_TYPES = new Set(["bulletin", "party", "minutes", "vote", "none", "statement", "bill"]);
 

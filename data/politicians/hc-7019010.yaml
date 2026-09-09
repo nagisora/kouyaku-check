@@ -1,0 +1,130 @@
+id: hc-7019010
+slug: otokita-shun
+name: 音喜多駿
+name_kana: おときた しゅん
+house: 参議院（東京都選挙区）
+party: 日本維新の会・教育無償化を実現する会
+profile_url: https://www.sangiin.go.jp/japanese/joho1/kousei/giin/profile/7019010.htm
+office_status: not_in_office
+updated_at: "2026-09-09"
+window:
+  from: "2024-10-01"
+  to: "2024-10-15"
+meta:
+  wikidata: Q16769876
+  district: 東京都選挙区
+  left_office_on: "2024-10-15"
+  window_note: 最終所属は参議院東京都選挙区。2024-10-15に公職選挙法90条で退職し、衆議院の議席は得ていない。観察は第214回（2024-10-01召集）から退職日まで。公式プロフィールは404。アーカイブで確認できる。
+entries:
+  - id: L01
+    topic: pm-nomination
+    claim:
+      summary: 会派として馬場伸幸を首班に推す
+      date: "2024-10-01"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.pdf
+      source_type: vote
+    action:
+      summary: 首班指名の記名投票で馬場伸幸に投じた
+      date: "2024-10-01"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.pdf
+      source_type: vote
+      diet_session: 214
+    label: 一致
+    notes: 参議院の公式記名投票PDF。観察期間内の公式資料に限る。
+
+  - id: L02
+    topic: session-length
+    claim:
+      summary: 今国会の会期に反対する
+      date: "2024-10-01"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.htm
+      source_type: vote
+    action:
+      summary: 会期の件の記名投票で反対した
+      date: "2024-10-01"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.htm
+      source_type: vote
+      diet_session: 214
+    label: 不明
+    notes: 表決は反対で確認できる。会期反対を掲げる事前の公約との対応は取れない。
+
+  - id: L03
+    topic: special-committee
+    claim:
+      summary: 所属する特別委員会で質疑する
+      date: "2024-10-01"
+      source_url: https://kokkai.ndl.go.jp/txt/121415359X00120241001/1
+      source_type: minutes
+    action:
+      summary: 特別委の委員だが観察期間内の発言は0件
+      date: "2024-10-01"
+      source_url: https://kokkai.ndl.go.jp/txt/121415359X00120241001/1
+      source_type: minutes
+      diet_session: 214
+    label: 不明
+    notes: 政府開発援助等及び沖縄・北方問題に関する特別委員会の委員。会議録に氏名はあるが本人発言はない。https://kokkai.ndl.go.jp/txt/121415359X00220241009/1
+
+  - id: L04
+    topic: social-insurance
+    claim:
+      summary: 社会保険料を引き下げる
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に立法や表決は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: 214
+    label: 不明
+    notes: 第214回の在職は10月1日から15日まで。この窓の立法行動は確認できない。
+
+  - id: L05
+    topic: political-funds
+    claim:
+      summary: 政治資金を改革する
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に表決や発言は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: 214
+    label: 不明
+    notes: 第214回の在職期間に政治資金の表決・発言は確認できない。
+
+  - id: L06
+    topic: seat-change
+    claim:
+      summary: 衆院選にくら替えして挑戦する
+      date: "2024-10-15"
+      source_url: https://otokitashun.com/blog/daily/36530/
+      source_type: statement
+    action:
+      summary: 公選法90条により2024-10-15に参院を退職した
+      date: "2024-10-15"
+      source_url: https://www.sangiin.go.jp/japanese/gianjoho/old_gaiyo/215/2150000-1-n.pdf
+      source_type: statement
+      diet_session: 215
+      action_kind: resignation
+    label: 一致
+    notes: 第215回国会概観に音喜多駿君の退職（6.10.15）と公選法90条による退職の記載。衆議院の議席は得ていない。
+
+  - id: L07
+    topic: tuition-free
+    claim:
+      summary: 教育無償化を実現する
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に国会での行動は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: 214
+    label: 不明
+    notes: 最終会派名に教育無償化を実現する会を含む。第214回の立法・発言は確認できない。

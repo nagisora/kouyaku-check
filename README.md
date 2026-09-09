@@ -13,6 +13,7 @@
 - 生のスクレイプダンプ、非公開メモ、秘密情報はリポジトリに入れません。
 - すべてのページに「公開資料の対照であり、断罪・判決・法律相談ではない」旨の注意書きを出します。
 - 就任前の表決は作りません。安野貴博は2025-07-20当選、2025-07-29就任。観察開始は第218回国会（2025-08-01召集）以降です。高市早苗は総理就任（2025-10-21）以降を観察し、閣法・閣議・総理発言・内閣人事を対照します。閣法は本人の衆法としては扱いません。
+- 非現職は `office_status: not_in_office` とし、ページ先頭に議席なしと出します。一覧にも載せますが、現職としては扱いません。
 
 ## 技術
 
@@ -57,12 +58,12 @@ entries:
       source_url: https://... # なければ ""
       source_type: vote
       diet_session: 221 # なければ null
-      action_kind: cabinet_bill # 任意。cabinet_bill | cabinet_decision | pm_speech | cabinet_personnel | other_member_bill
+      action_kind: cabinet_bill # 任意。cabinet_bill | cabinet_decision | pm_speech | cabinet_personnel | other_member_bill | member_bill | speech | written_question | caucus_position | resignation
     label: 一致 # 一致 | ズレ | 不明
     notes: 判断理由と出典の補足
 ```
 
-3. 任意で `slug`（例: `anno-takahiro`）を置くと `/politicians/{slug}` でも同じページが出ます。
+3. 任意で `slug`（例: `anno-takahiro`）を置くと `/politicians/{slug}` でも同じページが出ます。`office_status` は `in_office`（省略時）または `not_in_office` です。
 4. `source_url` は実在する公式ページだけを書いてください。公報の安定URLが無いときは、選管の公式掲載ページや党公式ページを使い、`notes` にその旨を書きます。架空URLは禁止です。
 5. `pnpm validate` でスキーマと件数を確認してからコミットします。
 
@@ -81,7 +82,7 @@ entries:
 2. **Add New… → Project** を開き、`nagisora/kouyaku-check` を Import する。
 3. Framework Preset が **Astro** になっていればそのまま。Build Command は `pnpm run build`、Output は `dist`。
 4. ルートディレクトリはリポジトリ直下。環境変数は不要です。
-5. Deploy する。プレビューURLで `/` と `/politicians/hc-7025005` と `/politicians/hr-230` を確認する。
+5. Deploy する。プレビューURLで `/` と掲載議員のページを確認する。
 6. 問題なければ Production に昇格（または main マージ後の自動デプロイ）する。
 
 GitHub 側で Vercel GitHub App のアクセスをこのリポジトリに許可する必要があります。トークンを発行して README に書く必要はありません。

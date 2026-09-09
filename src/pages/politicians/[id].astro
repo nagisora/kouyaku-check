@@ -1,6 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { actionKindLabel, actionSideHeading, countLabels, labelClassName, profileLinkLabel, sourceTypeLabel, topicLabel } from "../../lib/labels";
+import {
+  actionKindLabel,
+  actionSideHeading,
+  affiliationLine,
+  countLabels,
+  isSittingMember,
+  labelClassName,
+  officeStatusLabel,
+  profileLinkLabel,
+  sourceTypeLabel,
+  topicLabel,
+} from "../../lib/labels";
 import { loadPoliticians, politicianRoutes } from "../../lib/politicians";
 import type { Politician } from "../../lib/types";
 
@@ -19,14 +30,13 @@ type Props = {
 
 const { politician } = Astro.props;
 const counts = countLabels(politician.entries);
-const district = politician.meta?.district;
-const houseLine = district
-  ? `${politician.house} ／ ${politician.party} ／ ${district}`
-  : `${politician.house} ／ ${politician.party}`;
+const sitting = isSittingMember(politician);
+const houseLine = affiliationLine(politician);
 const windowTo = politician.window.to ?? "継続中";
 const windowNote =
   politician.meta?.window_note ??
   `国会行動の観察開始は ${politician.window.from}（第218回国会召集）以降です。`;
+const leftOfficeOn = politician.meta?.left_office_on ?? politician.window.to;
 
 function formatDate(value: string | null): string {
   return value ?? "日付なし";
@@ -42,6 +52,20 @@ function formatSession(value: string | number | null): string | null {
   description={`${politician.name}（${politician.party}）の発言と国会行動の対照。一致・ズレ・不明のみ。`}
   current="politician"
 >
+  {
+    sitting ? null : (
+      <section class="status-block" role="status">
+        <p class="status-kicker">{officeStatusLabel(politician.office_status)}</p>
+        <h2>現職の国会議員ではありません</h2>
+        <p>
+          {leftOfficeOn
+            ? `${leftOfficeOn}に議席を離れています。このページは最終所属時点の対照であり、現職としては扱いません。`
+            : "議席はありません。このページは最終所属時点の対照であり、現職としては扱いません。"}
+        </p>
+      </section>
+    )
+  }
+
   <section class="hero">
     <p class="kana">{politician.name_kana}</p>
     <h1>{politician.name}</h1>

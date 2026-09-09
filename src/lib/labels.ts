@@ -1,4 +1,4 @@
-import type { ActionKind, Entry, Label, LabelCounts, SourceType } from "./types";
+import type { ActionKind, Entry, Label, LabelCounts, OfficeStatus, Politician, SourceType } from "./types";
 
 export function countLabels(entries: Entry[]): LabelCounts {
   const counts: LabelCounts = { 一致: 0, ズレ: 0, 不明: 0 };
@@ -58,6 +58,16 @@ export function actionKindLabel(kind: ActionKind): string {
       return "内閣人事";
     case "other_member_bill":
       return "他議員の衆法";
+    case "member_bill":
+      return "本人提出の議員立法";
+    case "speech":
+      return "国会発言";
+    case "written_question":
+      return "質問主意書";
+    case "caucus_position":
+      return "会派の態度";
+    case "resignation":
+      return "退職・失職";
     default: {
       const _exhaustive: never = kind;
       return _exhaustive;
@@ -105,7 +115,63 @@ export const TOPIC_LABELS: Record<string, string> = {
   "constitutional-amendment": "憲法改正",
   "income-tax-wall": "年収の壁",
   "taiwan-contingency": "台湾・存立危機",
+  "take-home-pay": "対決より解決・手取り",
+  "income-tax-178": "所得税178万円",
+  "consumption-tax-5": "消費税一律5%",
+  "food-zero-alternative": "食料品ゼロへの対案",
+  "resident-tax-178": "住民税178万円",
+  "constitution-priority": "憲法の優先順位",
+  "selective-surnames": "選択的夫婦別姓",
+  "nuclear-surcharge": "原発・賦課金",
+  "youth-income-tax": "若者所得税",
+  invoice: "インボイス",
+  "consumption-tax-cut": "消費税減税",
+  "consumption-tax-bill": "消費税減税衆法",
+  "political-heir-ban": "ウラ金・世襲禁止",
+  "political-heir": "世襲",
+  "child-education": "子ども・教育投資",
+  "my-number": "マイナンバー",
+  "animal-welfare": "犬猫殺処分",
+  "high-school-exam": "高校入試",
+  "local-volunteer": "地方議員ボランティア",
+  "dark-jobs": "闇バイト",
+  "poster-dignity": "ポスター品位",
+  "rice-price": "米価",
+  "pm-nomination": "首班指名",
+  "session-length": "会期",
+  "special-committee": "特別委員会",
+  "social-insurance": "社会保険料",
+  "seat-change": "くら替え退職",
+  "tuition-free": "教育無償化",
 };
+
+export function officeStatusLabel(status: OfficeStatus): string {
+  switch (status) {
+    case "in_office":
+      return "現職";
+    case "not_in_office":
+      return "非現職 ／ 議席なし";
+    default: {
+      const _exhaustive: never = status;
+      return _exhaustive;
+    }
+  }
+}
+
+export function isSittingMember(politician: Politician): boolean {
+  return politician.office_status === "in_office";
+}
+
+export function affiliationLine(politician: Politician): string {
+  const district = politician.meta?.district;
+  const sitting = isSittingMember(politician);
+  const house = sitting ? politician.house : `最終所属：${politician.house}`;
+  const party = politician.party;
+  if (sitting) {
+    return district ? `${house} ／ ${party} ／ ${district}` : `${house} ／ ${party}`;
+  }
+  return district ? `${house} ／ ${party} ／ ${district} ／ 議席なし` : `${house} ／ ${party} ／ 議席なし`;
+}
 
 export function topicLabel(topic: string): string {
   return TOPIC_LABELS[topic] ?? topic;

@@ -1,7 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { actionKindLabel, actionSideHeading, countLabels, labelClassName, profileLinkLabel, sourceTypeLabel, topicLabel } from "../src/lib/labels";
-import { ACTION_KINDS, LABELS, SOURCE_TYPES } from "../src/lib/types";
-import type { Entry } from "../src/lib/types";
+import {
+  actionKindLabel,
+  actionSideHeading,
+  affiliationLine,
+  countLabels,
+  isSittingMember,
+  labelClassName,
+  officeStatusLabel,
+  profileLinkLabel,
+  sourceTypeLabel,
+  topicLabel,
+} from "../src/lib/labels";
+import { ACTION_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "../src/lib/types";
+import type { Entry, Politician } from "../src/lib/types";
 
 function sampleEntry(label: Entry["label"]): Entry {
   return {
@@ -48,14 +59,53 @@ describe("言行 labels", () => {
   });
 
   it("labels cabinet actions without calling them member bills", () => {
-    expect(ACTION_KINDS).toEqual(["cabinet_bill", "cabinet_decision", "pm_speech", "cabinet_personnel", "other_member_bill"]);
+    expect(ACTION_KINDS).toEqual([
+      "cabinet_bill",
+      "cabinet_decision",
+      "pm_speech",
+      "cabinet_personnel",
+      "other_member_bill",
+      "member_bill",
+      "speech",
+      "written_question",
+      "caucus_position",
+      "resignation",
+    ]);
     expect(actionKindLabel("cabinet_bill")).toBe("閣法（内閣提出）");
     expect(actionKindLabel("cabinet_decision")).toBe("閣議決定");
     expect(actionKindLabel("pm_speech")).toBe("総理発言");
     expect(actionKindLabel("cabinet_personnel")).toBe("内閣人事");
     expect(actionKindLabel("other_member_bill")).toBe("他議員の衆法");
+    expect(actionKindLabel("member_bill")).toBe("本人提出の議員立法");
+    expect(actionKindLabel("speech")).toBe("国会発言");
+    expect(actionKindLabel("written_question")).toBe("質問主意書");
+    expect(actionKindLabel("caucus_position")).toBe("会派の態度");
+    expect(actionKindLabel("resignation")).toBe("退職・失職");
     expect(actionSideHeading(undefined)).toBe("国会での行動");
     expect(actionSideHeading("cabinet_bill")).toBe("行動");
+  });
+
+  it("marks not_in_office without presenting the person as sitting", () => {
+    expect(OFFICE_STATUSES).toEqual(["in_office", "not_in_office"]);
+    expect(officeStatusLabel("in_office")).toBe("現職");
+    expect(officeStatusLabel("not_in_office")).toBe("非現職 ／ 議席なし");
+    const former: Politician = {
+      id: "hc-7019010",
+      name: "音喜多駿",
+      name_kana: "おときた しゅん",
+      house: "参議院（東京都選挙区）",
+      party: "日本維新の会・教育無償化を実現する会",
+      profile_url: "https://example.invalid/profile",
+      updated_at: "2026-09-09",
+      window: { from: "2024-10-01", to: "2024-10-15" },
+      office_status: "not_in_office",
+      meta: { district: "東京都選挙区" },
+      entries: [],
+    };
+    expect(isSittingMember(former)).toBe(false);
+    expect(affiliationLine(former)).toContain("最終所属");
+    expect(affiliationLine(former)).toContain("議席なし");
+    expect(affiliationLine(former)).not.toMatch(/^参議院/);
   });
 
   it("picks the profile link label from the house", () => {

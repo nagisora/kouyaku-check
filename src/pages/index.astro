@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { countLabels, labelClassName } from "../lib/labels";
+import { countLabels, isSittingMember, labelClassName } from "../lib/labels";
 import { loadPoliticians } from "../lib/politicians";
 
 const politicians = loadPoliticians();
@@ -28,9 +28,12 @@ const politicians = loadPoliticians();
         return (
           <li>
             <a class="member-card" href={`/politicians/${politician.id}`}>
-              <h2>{politician.name}</h2>
+              <h2>
+                {politician.name}
+                {isSittingMember(politician) ? null : <span class="office-badge">非現職 ／ 議席なし</span>}
+              </h2>
               <p class="member-meta">
-                {politician.house} ／ {politician.party}
+                {isSittingMember(politician) ? `${politician.house} ／ ${politician.party}` : `最終所属：${politician.house} ／ ${politician.party}`}
               </p>
               <div class="mini-counts">
                 <span class:list={["label-badge", labelClassName("一致")]}>一致 {counts.一致}</span>
