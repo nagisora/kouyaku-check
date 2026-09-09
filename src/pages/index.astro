@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { countLabels, labelClassName } from "../lib/labels";
+import { loadPoliticians } from "../lib/politicians";
+
+const politicians = loadPoliticians();
+---
+
+<BaseLayout title="言行チェック" current="home">
+  <section class="hero">
+    <h1>言行チェック</h1>
+    <p class="lede">
+      国会議員の主張と、国会での質疑・表決を短い要約と公式リンクで対照します。ラベルは一致・ズレ・不明のみ。点数化はしません。
+    </p>
+  </section>
+
+  <section class="about-card" aria-labelledby="scope-heading">
+    <h2 id="scope-heading">いま見られる対象</h2>
+    <p>
+      MVPでは指定した議員のみを掲載します。データはリポジトリの YAML をビルド時に読み込み、データベースは使いません。
+    </p>
+  </section>
+
+  <ul class="member-list">
+    {
+      politicians.map((politician) => {
+        const counts = countLabels(politician.entries);
+        return (
+          <li>
+            <a class="member-card" href={`/politicians/${politician.id}`}>
+              <h2>{politician.name}</h2>
+              <p class="member-meta">
+                {politician.house} ／ {politician.party}
+              </p>
+              <div class="mini-counts">
+                <span class:list={["label-badge", labelClassName("一致")]}>一致 {counts.一致}</span>
+                <span class:list={["label-badge", labelClassName("ズレ")]}>ズレ {counts.ズレ}</span>
+                <span class:list={["label-badge", labelClassName("不明")]}>不明 {counts.不明}</span>
+              </div>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</BaseLayout>

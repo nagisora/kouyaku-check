@@ -1,0 +1,47 @@
+---
+import Disclaimer from "../components/Disclaimer.astro";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description?: string;
+  current?: "home" | "about" | "politician";
+};
+
+const {
+  title,
+  description = "国会議員の発言と国会での行動を、一致・ズレ・不明のラベルだけで対照する公開記録です。信頼スコアはありません。",
+  current,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ</a>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <span class="brand-title">言行チェック</span>
+        <span class="brand-sub">発言と国会行動の対照記録</span>
+      </a>
+      <nav class="nav-links" aria-label="サイト内">
+        <a href="/" aria-current={current === "home" ? "page" : undefined}>一覧</a>
+        <a href="/about" aria-current={current === "about" ? "page" : undefined}>このサイト</a>
+      </nav>
+    </header>
+    <main id="main" class="site-main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <Disclaimer />
+    </footer>
+  </body>
+</html>

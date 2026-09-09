@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { countLabels, labelClassName, sourceTypeLabel, topicLabel } from "../../lib/labels";
+import { loadPoliticians, politicianRoutes } from "../../lib/politicians";
+import type { Politician } from "../../lib/types";
+
+export function getStaticPaths() {
+  return loadPoliticians().flatMap((politician) =>
+    politicianRoutes(politician).map((id) => ({
+      params: { id },
+      props: { politician },
+    })),
+  );
+}
+
+type Props = {
+  politician: Politician;
+};
+
+const { politician } = Astro.props;
+const counts = countLabels(politician.entries);
+const windowTo = politician.window.to ?? "継続中";
+const windowNote =
+  politician.meta?.window_note ??
+  `国会行動の観察開始は ${politician.window.from}（第218回国会召集）以降です。`;
+
+function formatDate(value: string | null): string {
+  return value ?? "日付なし";
+}
+
+function formatSession(value: string | number | null): string | null {
+  return value === null || value === "" ? null : `第${value}回`;
+}
+---
+
+<BaseLayout
+  title={`${politician.name} — 言行チェック`}
+  description={`${politician.name}（${politician.party}）の発言と国会行動の対照。一致・ズレ・不明のみ。`}
+  current="politician"
+>
+  <section class="hero">
+    <p class="kana">{politician.name_kana}</p>
+    <h1>{politician.name}</h1>
+    <p class="meta-line">{politician.house} ／ {politician.party}</p>
+    <div class="profile-links">
+      <a href={politician.profile_url} rel="noopener noreferrer">参議院プロフィール</a>
+      {
+        politician.meta?.wikidata && (
+          <a
+            href={`https://www.wikidata.org/wiki/${politician.meta.wikidata}`}
+            rel="noopener noreferrer"
+          >
+            Wikidata
+          </a>
+        )
+      }
+    </div>
+  </section>
+
+  <p class="window-note">{windowNote} 観察期間：{politician.window.from} 〜 {windowTo}。</p>
+
+  <section class="count-row" aria-label="ラベル件数">
+    <div class="count-card match">
+      <strong>{counts.一致}</strong>
+      <span>一致</span>
+    </div>
+    <div class="count-card gap">
+      <strong>{counts.ズレ}</strong>
+      <span>ズレ</span>
+    </div>
+    <div class="count-card unknown">
+      <strong>{counts.不明}</strong>
+      <span>不明</span>
+    </div>
+  </section>
+
+  <section class="entry-list" aria-label="対照一覧">
+    {
+      politician.entries.map((entry) => {
+        const session = formatSession(entry.action.diet_session);
+        return (
+          <article class="entry-card" id={entry.id}>
+            <div class="entry-head">
+              <span class:list={["label-badge", labelClassName(entry.label)]}>{entry.label}</span>
+              <span class="topic">{topicLabel(entry.topic)}</span>
+              <span class="entry-id">{entry.id}</span>
+            </div>
+            <div class="compare">
+              <div class="side">
+                <h3>主張</h3>
+                <p>{entry.claim.summary}</p>
+                <p class="source-row">
+                  {formatDate(entry.claim.date)} ／ {sourceTypeLabel(entry.claim.source_type)}
+                  {
+                    entry.claim.source_url ? (
+                      <>
+                        {" "}
+                        ·{" "}
+                        <a href={entry.claim.source_url} rel="noopener noreferrer">
+                          出典
+                        </a>
+                      </>
+                    ) : null
+                  }
+                </p>
+              </div>
+              <div class="side">
+                <h3>国会での行動</h3>
+                <p>{entry.action.summary}</p>
+                <p class="source-row">
+                  {formatDate(entry.action.date)}
+                  {session ? ` ／ ${session}` : ""} ／ {sourceTypeLabel(entry.action.source_type)}
+                  {
+                    entry.action.source_url ? (
+                      <>
+                        {" "}
+                        ·{" "}
+                        <a href={entry.action.source_url} rel="noopener noreferrer">
+                          出典
+                        </a>
+                      </>
+                    ) : (
+                      " ／ 出典URLなし"
+                    )
+                  }
+                </p>
+              </div>
+            </div>
+            {entry.notes && <p class="notes">{entry.notes}</p>}
+          </article>
+        );
+      })
+    }
+  </section>
+
+  <p class="updated">データ更新日：{politician.updated_at}</p>
+</BaseLayout>

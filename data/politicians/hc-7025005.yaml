@@ -1,0 +1,208 @@
+id: hc-7025005
+slug: anno-takahiro
+name: 安野貴博
+name_kana: あんの たかひろ
+house: 参議院（比例）
+party: チームみらい
+profile_url: https://www.sangiin.go.jp/japanese/joho1/kousei/giin/profile/7025005.htm
+updated_at: "2026-09-09"
+window:
+  from: "2025-08-01"
+  to: null
+meta:
+  wikidata: Q126992672
+  elected_on: "2025-07-20"
+  in_office_from: "2025-07-29"
+  window_note: 国会での言行は第218回（2025-08-01召集）以降のみ。当選は2025-07-20、任期開始は2025-07-29。就任前の表決は記録しない。
+entries:
+  - id: L01
+    topic: political-funds
+    claim:
+      summary: 政治資金の流れを透明化し、見える化する
+      date: "2025-07-03"
+      source_url: https://www.pref.gunma.jp/page/709290.html
+      source_type: bulletin
+    action:
+      summary: 総務委で収支の自動連携と可視化を質疑
+      date: "2025-12-16"
+      source_url: https://kokkai.ndl.go.jp/txt/121914601X00420251216/100
+      source_type: minutes
+      diet_session: 219
+    label: 一致
+    notes: 主張は2025年参院選比例の選挙公報（名簿届出政党・チームみらい）。公報PDFのファイル名は各選管の掲載に依存するため、選管の公式掲載ページを一次リンクとする。国会側は第219回総務委員会での政治資金質疑。
+
+  - id: L02
+    topic: internet-voting
+    claim:
+      summary: インターネット投票の導入を掲げる
+      date: "2025-07-03"
+      source_url: https://www.pref.gunma.jp/page/709290.html
+      source_type: bulletin
+    action:
+      summary: 公職選挙法改正案に賛成
+      date: "2026-07-13"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0713-v003.htm
+      source_type: vote
+      diet_session: 221
+    label: 一致
+    notes: 案件は公職選挙法及び特定電気通信権利侵害対処法の一部改正。附則は検討規定であり、即時の全面解禁ではない。
+
+  - id: L03
+    topic: push-notifications
+    claim:
+      summary: 公約としてプッシュ型支援を掲げたと会議録で引用
+      date: "2025-11-25"
+      source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/161
+      source_type: minutes
+    action:
+      summary: 総務委で申請主義の負担軽減を質疑
+      date: "2025-11-25"
+      source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/161
+      source_type: minutes
+      diet_session: 219
+    label: 一致
+    notes: 会議録本人発言で参院選公約のプッシュ型支援に言及し、同日の質疑で申請手続の負担軽減を求めている。
+
+  - id: L04
+    topic: digital-admin
+    claim:
+      summary: 行政手続のデジタル化を進める
+      date: "2025-07-03"
+      source_url: https://www.pref.gunma.jp/page/709290.html
+      source_type: bulletin
+    action:
+      summary: 行政手続オンライン化等の改正案に賛成
+      date: "2026-07-10"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0710-v001.htm
+      source_type: vote
+      diet_session: 221
+    label: 一致
+    notes: 案件は情報通信技術を活用した行政の推進等に関する法律及び情報処理促進法の一部改正。
+
+  - id: L05
+    topic: tax-vs-social-insurance
+    claim:
+      summary: いびつな税・社会保険を見直し、負担を再設計する
+      date: "2025-07-03"
+      source_url: https://team-mir.ai/election/sangiin-2025
+      source_type: party
+    action:
+      summary: 党首討論で消費税減税より所得連動型を提起
+      date: "2026-07-15"
+      source_url: https://kokkai.ndl.go.jp/txt/122124293X00220260715/59
+      source_type: minutes
+      diet_session: 221
+    label: 一致
+    notes: 主張は2025年参院選の党マニフェスト（税・社会保障の再構築）と公報の問題意識。党公式の2025年参院選ページを一次リンクとする。行動は国家基本政策委員会合同審査会。
+
+  - id: L06
+    topic: public-oss
+    claim:
+      summary: 公費のコードは公共財として公開する
+      date: "2025-11-25"
+      source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/167
+      source_type: minutes
+    action:
+      summary: 総務委で自治体のOSS活用と解釈周知を質疑
+      date: "2025-11-25"
+      source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/167
+      source_type: minutes
+      diet_session: 219
+    label: 一致
+    notes: 会議録で党方針としてOSS公開を述べ、同日に自治体システムへの適用と総務省見解の周知を求めている。
+
+  - id: L07
+    topic: ai-privacy
+    claim:
+      summary: AI活用と個人情報保護の両立を掲げる
+      date: "2025-07-03"
+      source_url: https://team-mir.ai/election/sangiin-2025
+      source_type: party
+    action:
+      summary: 個人情報保護法改正案に賛成
+      date: "2026-07-10"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0710-v002.htm
+      source_type: vote
+      diet_session: 221
+    label: 一致
+    notes: 主張は2025年参院選公報および党マニフェスト。公報PDFの安定URLがないため、党の2025年参院選公式ページを一次リンクとする。
+
+  - id: L08
+    topic: science-tech
+    claim:
+      summary: 科学技術・イノベーションへの投資を掲げる
+      date: "2025-07-03"
+      source_url: https://www.pref.gunma.jp/page/709290.html
+      source_type: bulletin
+    action:
+      summary: 科技イノベ活性化法改正案に賛成
+      date: "2026-07-13"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0713-v004.htm
+      source_type: vote
+      diet_session: 221
+    label: 一致
+    notes: 案件は科学技術・イノベーション創出の活性化に関する法律の一部改正。
+
+  - id: L09
+    topic: digital-subcapital
+    claim:
+      summary: 行政のデジタル化と機能分散を進める
+      date: "2025-07-03"
+      source_url: https://team-mir.ai/election/sangiin-2025
+      source_type: party
+    action:
+      summary: 副首都整備推進法に賛成
+      date: "2026-07-24"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0724-v006.htm
+      source_type: vote
+      diet_session: 221
+    label: 一致
+    notes: 案件は国家社会機能継続性確保施策及び副首都の整備に係る施策の推進に関する法律案。提出者は高山聡史。
+
+  - id: L10
+    topic: catastrophic-coverage
+    claim:
+      summary: 高額療養費制度を守る
+      date: "2026-02-01"
+      source_url: https://team-mir.ai/election/shugiin-2026
+      source_type: party
+    action:
+      summary: 健康保険法等改正案に賛成
+      date: "2026-05-29"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0529-v005.htm
+      source_type: vote
+      diet_session: 221
+    label: 不明
+    notes: 党は「高額療養費を守る」と掲げる。当該改正はOTC類似薬負担や出産費用など複数項目の一括法案。賛否理由を述べる本会議発言は確認できず、制度維持との対応は判断できない。
+
+  - id: L11
+    topic: child-tax-cut
+    claim:
+      summary: 子どもの数に応じた子育て減税を掲げる
+      date: "2025-07-03"
+      source_url: https://www.pref.gunma.jp/page/709290.html
+      source_type: bulletin
+    action:
+      summary: 所得税法等改正案に反対
+      date: "2026-03-31"
+      source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0331-v012.htm
+      source_type: vote
+      diet_session: 221
+    label: 不明
+    notes: 公報は「子育て減税」。当該改正は防衛財源の加算税等を含む一括法案。反対理由の本会議発言は確認できず、公約との対応は判断できない。
+
+  - id: L12
+    topic: corporate-donations-ban
+    claim:
+      summary: 企業・団体献金をゼロにする
+      date: "2025-07-03"
+      source_url: https://team-mir.ai/
+      source_type: party
+    action:
+      summary: 党の自己申告は0円。禁止法案の提出は未確認
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: null
+    label: 不明
+    notes: 党公式は企業・団体献金0円を掲げるが、これは党の自己申告であり、国会での企業団体献金禁止法案とは別。調査時点で該当する禁止法案は見つからなかった。
