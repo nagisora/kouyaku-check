@@ -42,7 +42,7 @@ profile_url: https://www.sangiin.go.jp/...
 updated_at: YYYY-MM-DD
 window:
   from: YYYY-MM-DD
-  to: null          # 継続中なら null
+  to: null # 継続中なら null
 entries:
   - id: L01
     topic: political-funds
@@ -50,14 +50,14 @@ entries:
       summary: 約40字の言い換え
       date: YYYY-MM-DD
       source_url: https://...
-      source_type: bulletin   # bulletin | party | minutes | vote | none
+      source_type: bulletin # bulletin | party | minutes | vote | none
     action:
       summary: 約40字の言い換え
-      date: YYYY-MM-DD        # なければ null
+      date: YYYY-MM-DD # なければ null
       source_url: https://... # なければ ""
       source_type: vote
-      diet_session: 221       # なければ null
-    label: 一致               # 一致 | ズレ | 不明
+      diet_session: 221 # なければ null
+    label: 一致 # 一致 | ズレ | 不明
     notes: 判断理由と出典の補足
 ```
 

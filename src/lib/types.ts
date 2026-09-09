@@ -1,13 +1,7 @@
 export const LABELS = ["一致", "ズレ", "不明"] as const;
 export type Label = (typeof LABELS)[number];
 
-export const SOURCE_TYPES = [
-  "bulletin",
-  "party",
-  "minutes",
-  "vote",
-  "none",
-] as const;
+export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none"] as const;
 export type SourceType = (typeof SOURCE_TYPES)[number];
 
 export type Claim = {

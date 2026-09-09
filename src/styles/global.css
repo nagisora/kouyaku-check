@@ -32,13 +32,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family:
-    "Hiragino Sans",
-    "Hiragino Kaku Gothic ProN",
-    "Noto Sans JP",
-    "Yu Gothic Medium",
-    "Yu Gothic",
-    sans-serif;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic Medium", "Yu Gothic", sans-serif;
   font-size: 16px;
   line-height: 1.7;
 }
