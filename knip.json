@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["scripts/**/*.{ts,mjs,js}", "src/**/*.astro", "test/**/*.ts"],
+  "project": ["src/**/*.{ts,astro}", "test/**/*.ts"],
+  "rules": {
+    "exports": "warn",
+    "types": "warn",
+    "files": "warn",
+    "dependencies": "warn",
+    "devDependencies": "warn",
+    "unlisted": "warn",
+    "binaries": "warn"
+  }
+}
