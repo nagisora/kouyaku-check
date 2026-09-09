@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDietSession, isLabel, isSourceType } from "../src/lib/yaml-values";
+import { formatDietSession, isLabel, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
 
 describe("formatDietSession", () => {
   it("keeps empty values as null", () => {
@@ -33,5 +33,14 @@ describe("isSourceType", () => {
     expect(isSourceType("bulletin")).toBe(true);
     expect(isSourceType("vote")).toBe(true);
     expect(isSourceType("tweet")).toBe(false);
+  });
+});
+
+describe("toMessage", () => {
+  it("stringifies numbers and booleans for error text", () => {
+    expect(toMessage(12)).toBe("12");
+    expect(toMessage("L01")).toBe("L01");
+    expect(toMessage(true)).toBe("true");
+    expect(entrySlot(3)).toBe("entries[3]");
   });
 });
