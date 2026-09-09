@@ -2,7 +2,7 @@
   "version": 1,
   "tool": "ever-better",
   "phase": "drain",
-  "updatedAt": "2026-09-09T01:15:44.014Z",
+  "updatedAt": "2026-09-09T01:16:44.012Z",
   "frozenAt": "2026-09-09T01:10:05.550Z",
   "diagnosedAt": "2026-09-09T01:10:27.426Z",
   "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
@@ -111,9 +111,9 @@
       "status": "enforced"
     },
     "max-lines-per-function": {
-      "baseline": 1,
-      "current": 1,
-      "status": "draining"
+      "baseline": 0,
+      "current": 0,
+      "status": "enforced"
     },
     "@typescript-eslint/no-base-to-string": {
       "baseline": 0,
@@ -166,6 +166,13 @@
       "rule": "@typescript-eslint/consistent-type-assertions",
       "commit": "0d55217d4feffa74386cd5644862761a913f2678",
       "at": "2026-09-09T01:15:44.013Z"
+    },
+    {
+      "kind": "drained",
+      "text": "split parsePolitician into parseMeta + parseEntry",
+      "rule": "max-lines-per-function",
+      "commit": "c152f478df39a7f5ae0f5664a9b0dc81731534af",
+      "at": "2026-09-09T01:16:44.011Z"
     }
   ]
 }

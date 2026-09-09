@@ -24,9 +24,6 @@
   "src/lib/politicians.ts": {
     "@typescript-eslint/restrict-template-expressions": {
       "count": 9
-    },
-    "max-lines-per-function": {
-      "count": 1
     }
   }
 }
