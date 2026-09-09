@@ -69,8 +69,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
     ? {
         wikidata: typeof metaRaw.wikidata === "string" ? metaRaw.wikidata : undefined,
         elected_on: typeof metaRaw.elected_on === "string" ? metaRaw.elected_on : undefined,
-        in_office_from:
-          typeof metaRaw.in_office_from === "string" ? metaRaw.in_office_from : undefined,
+        in_office_from: typeof metaRaw.in_office_from === "string" ? metaRaw.in_office_from : undefined,
         window_note: typeof metaRaw.window_note === "string" ? metaRaw.window_note : undefined,
       }
     : undefined;
@@ -117,10 +116,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
           date: asOptionalString(action.date),
           source_url: typeof action.source_url === "string" ? action.source_url : "",
           source_type: asSourceType(action.source_type, `entries[${index}].action`),
-          diet_session:
-            action.diet_session === null || action.diet_session === undefined
-              ? null
-              : String(action.diet_session),
+          diet_session: action.diet_session === null || action.diet_session === undefined ? null : String(action.diet_session),
         },
         label: label as (typeof LABELS)[number],
         notes: typeof entry.notes === "string" ? entry.notes : "",
@@ -152,9 +148,7 @@ export function loadPoliticians(): Politician[] {
 }
 
 export function getPoliticianByRoute(routeId: string): Politician | undefined {
-  return loadPoliticians().find(
-    (politician) => politician.id === routeId || politician.slug === routeId,
-  );
+  return loadPoliticians().find((politician) => politician.id === routeId || politician.slug === routeId);
 }
 
 export function politicianRoutes(politician: Politician): string[] {

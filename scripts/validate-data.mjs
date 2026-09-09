@@ -98,18 +98,14 @@ for (const fileName of files) {
   if (raw.id === "hc-7025005") {
     listedAnno = true;
     if (counts.一致 !== 9 || counts.ズレ !== 0 || counts.不明 !== 3) {
-      fail(
-        `${fileName}: expected 9 一致 / 0 ズレ / 3 不明, got ${counts.一致} / ${counts.ズレ} / ${counts.不明}`,
-      );
+      fail(`${fileName}: expected 9 一致 / 0 ズレ / 3 不明, got ${counts.一致} / ${counts.ズレ} / ${counts.不明}`);
     }
     if (raw.entries.length !== 12) {
       fail(`${fileName}: expected 12 entries`);
     }
   }
 
-  console.log(
-    `${fileName}: ${counts.一致} 一致 / ${counts.ズレ} ズレ / ${counts.不明} 不明`,
-  );
+  console.log(`${fileName}: ${counts.一致} 一致 / ${counts.ズレ} ズレ / ${counts.不明} 不明`);
 }
 
 if (!listedAnno) {
