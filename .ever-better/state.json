@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "tool": "ever-better",
+  "phase": "drain",
+  "updatedAt": "2026-09-09T01:10:27.427Z",
+  "frozenAt": "2026-09-09T01:10:05.550Z",
+  "diagnosedAt": "2026-09-09T01:10:27.426Z",
+  "diagnosedCommit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
+  "diagnosis": {
+    "packageManager": "pnpm",
+    "language": "mixed",
+    "framework": "astro",
+    "runtime": "both",
+    "typescriptFileRatio": 0.8333333333333334,
+    "tooling": {
+      "eslint": "flat",
+      "prettier": true,
+      "testRunner": "vitest",
+      "knip": true,
+      "jscpd": true,
+      "secretScanning": true,
+      "agentInstructions": [
+        "CLAUDE.md"
+      ]
+    },
+    "scripts": {
+      "lint": true,
+      "format": true,
+      "build": true,
+      "typecheck": true,
+      "test": true
+    },
+    "ci": {
+      "present": true,
+      "runners": [
+        "macos-latest",
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "runsLint": true,
+      "runsTest": true,
+      "runsBuild": true,
+      "runsTypecheck": true,
+      "runsEverBetterCheck": true
+    },
+    "sizes": {
+      "total": 12,
+      "overFileLimit": 0,
+      "largest": []
+    },
+    "gaps": [
+      {
+        "id": "typescript-partial",
+        "title": "Only 83% of sources are TypeScript",
+        "detail": "The type-aware rules cover the typed part only, so the remaining .js files are the blind spot the counts will not show.",
+        "phase": "tighten"
+      },
+      {
+        "id": "framework-files",
+        "title": ".astro files are not linted",
+        "detail": "The generated config covers .ts and .js only for this framework, so those files pass by being skipped. Add the framework's ESLint plugin before freezing, or the baseline records a number that ignores half the repo.",
+        "phase": "bootstrap"
+      },
+      {
+        "id": "tsconfig-strictness",
+        "title": "2 strictness flags `strict` does not include are off",
+        "detail": "Measured with `tsc --showConfig`, after every extends: exactOptionalPropertyTypes, noPropertyAccessFromIndexSignature. Type errors have no suppression mechanism, so enable them one at a time and measure the cost first.",
+        "phase": "tighten"
+      }
+    ]
+  },
+  "rules": {
+    "sonarjs/no-alphabetical-sort": {
+      "baseline": 2,
+      "current": 2,
+      "status": "draining"
+    },
+    "@typescript-eslint/no-unsafe-member-access": {
+      "baseline": 21,
+      "current": 21,
+      "status": "draining"
+    },
+    "@typescript-eslint/no-unsafe-call": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/restrict-template-expressions": {
+      "baseline": 21,
+      "current": 21,
+      "status": "draining"
+    },
+    "@typescript-eslint/no-unsafe-argument": {
+      "baseline": 3,
+      "current": 3,
+      "status": "draining"
+    },
+    "@typescript-eslint/restrict-plus-operands": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/triple-slash-reference": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/consistent-type-assertions": {
+      "baseline": 4,
+      "current": 4,
+      "status": "draining"
+    },
+    "max-lines-per-function": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/no-base-to-string": {
+      "baseline": 1,
+      "current": 1,
+      "status": "draining"
+    },
+    "@typescript-eslint/consistent-type-definitions": {
+      "baseline": 6,
+      "current": 6,
+      "status": "draining"
+    }
+  },
+  "counters": {
+    "eslint:warnings": {
+      "baseline": 4,
+      "current": 4
+    }
+  },
+  "log": [
+    {
+      "kind": "note",
+      "text": "ever-better 0.5.0 bootstrap: prettier + eslint 10 + vitest + knip + gitleaks CI. typecheck is astro check because tsc cannot read .astro. id-length exceptions for 一致/ズレ/不明. No eslint-plugin-astro (upstream gap).",
+      "commit": "dcd555fa4c5bc807aaaf066a41353602bd7675df",
+      "at": "2026-09-09T01:10:12.387Z"
+    }
+  ]
+}
