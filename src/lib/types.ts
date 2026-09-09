@@ -1,8 +1,17 @@
-export const LABELS = ["過程一致", "結果到達", "ズレ", "不明"] as const;
+export const LABELS = ["行動一致", "公約実現", "ズレ", "不明"] as const;
 export type Label = (typeof LABELS)[number];
 
 export const CLAIM_KINDS = ["hard", "soft"] as const;
 export type ClaimKind = (typeof CLAIM_KINDS)[number];
+
+export const AGENCY_CAPACITIES = ["individual", "caucus_or_party", "cabinet_or_executive", "unknown"] as const;
+export type AgencyCapacity = (typeof AGENCY_CAPACITIES)[number];
+
+export const VOTING_METHODS = ["named_rollcall", "pushbutton", "standing_or_voice", "no_objection", "unknown"] as const;
+export type VotingMethod = (typeof VOTING_METHODS)[number];
+
+export const HORIZON_STATUSES = ["achieved", "in_flight", "truncated_dissolution", "horizon_not_reached", "not_applicable"] as const;
+export type HorizonStatus = (typeof HORIZON_STATUSES)[number];
 
 export const SOURCE_TYPES = ["bulletin", "party", "minutes", "vote", "none", "statement", "bill"] as const;
 export type SourceType = (typeof SOURCE_TYPES)[number];
@@ -47,6 +56,10 @@ export interface Entry {
   action: Action;
   label: Label;
   claim_kind?: ClaimKind;
+  agency_capacity?: AgencyCapacity;
+  agency_actor?: string;
+  voting_method?: VotingMethod;
+  horizon_status?: HorizonStatus;
   notes: string;
 }
 

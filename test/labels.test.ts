@@ -3,17 +3,20 @@ import {
   actionKindLabel,
   actionSideHeading,
   affiliationLine,
+  agencyCapacityLabel,
   countCardClassName,
   countLabels,
   formatLabelCounts,
+  horizonStatusLabel,
   isSittingMember,
   labelClassName,
   officeStatusLabel,
   profileLinkLabel,
   sourceTypeLabel,
   topicLabel,
+  votingMethodLabel,
 } from "../src/lib/labels";
-import { ACTION_KINDS, CLAIM_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "../src/lib/types";
+import { ACTION_KINDS, AGENCY_CAPACITIES, CLAIM_KINDS, HORIZON_STATUSES, LABELS, OFFICE_STATUSES, SOURCE_TYPES, VOTING_METHODS } from "../src/lib/types";
 import type { Entry, Politician } from "../src/lib/types";
 
 function sampleEntry(label: Entry["label"]): Entry {
@@ -34,27 +37,49 @@ function sampleEntry(label: Entry["label"]): Entry {
 }
 
 describe("言行 labels", () => {
-  it("exposes only 過程一致 / 結果到達 / ズレ / 不明", () => {
-    expect(LABELS).toEqual(["過程一致", "結果到達", "ズレ", "不明"]);
+  it("exposes only 行動一致 / 公約実現 / ズレ / 不明", () => {
+    expect(LABELS).toEqual(["行動一致", "公約実現", "ズレ", "不明"]);
   });
 
   it("counts each label independently without merging matches", () => {
-    const counts = countLabels([sampleEntry("過程一致"), sampleEntry("結果到達"), sampleEntry("過程一致"), sampleEntry("不明")]);
-    expect(counts).toEqual({ 過程一致: 2, 結果到達: 1, ズレ: 0, 不明: 1 });
-    expect(formatLabelCounts(counts)).toBe("2 過程一致 / 1 結果到達 / 0 ズレ / 1 不明");
+    const counts = countLabels([sampleEntry("行動一致"), sampleEntry("公約実現"), sampleEntry("行動一致"), sampleEntry("不明")]);
+    expect(counts).toEqual({ 行動一致: 2, 公約実現: 1, ズレ: 0, 不明: 1 });
+    expect(formatLabelCounts(counts)).toBe("2 行動一致 / 1 公約実現 / 0 ズレ / 1 不明");
+    expect(Object.keys(counts)).toEqual(["行動一致", "公約実現", "ズレ", "不明"]);
+    expect(Object.hasOwn(counts, "一致")).toBe(false);
   });
 
   it("maps labels to CSS class names", () => {
-    expect(labelClassName("過程一致")).toBe("label-process");
-    expect(labelClassName("結果到達")).toBe("label-outcome");
+    expect(labelClassName("行動一致")).toBe("label-action");
+    expect(labelClassName("公約実現")).toBe("label-realized");
     expect(labelClassName("ズレ")).toBe("label-gap");
     expect(labelClassName("不明")).toBe("label-unknown");
-    expect(countCardClassName("過程一致")).toBe("process");
-    expect(countCardClassName("結果到達")).toBe("outcome");
+    expect(countCardClassName("行動一致")).toBe("action");
+    expect(countCardClassName("公約実現")).toBe("realized");
   });
 
   it("exposes hard and soft claim kinds", () => {
     expect(CLAIM_KINDS).toEqual(["hard", "soft"]);
+  });
+
+  it("maps coarse agency, voting, and horizon tags", () => {
+    expect(AGENCY_CAPACITIES).toEqual(["individual", "caucus_or_party", "cabinet_or_executive", "unknown"]);
+    expect(agencyCapacityLabel("individual")).toBe("本人");
+    expect(agencyCapacityLabel("caucus_or_party")).toBe("会派・党");
+    expect(agencyCapacityLabel("cabinet_or_executive")).toBe("内閣・行政");
+    expect(agencyCapacityLabel("unknown")).toBe("主体不明");
+    expect(VOTING_METHODS).toEqual(["named_rollcall", "pushbutton", "standing_or_voice", "no_objection", "unknown"]);
+    expect(votingMethodLabel("named_rollcall")).toBe("記名投票");
+    expect(votingMethodLabel("pushbutton")).toBe("押しボタン式");
+    expect(votingMethodLabel("standing_or_voice")).toBe("起立・声認");
+    expect(votingMethodLabel("no_objection")).toBe("異議なし");
+    expect(votingMethodLabel("unknown")).toBe("表決方法不明");
+    expect(HORIZON_STATUSES).toEqual(["achieved", "in_flight", "truncated_dissolution", "horizon_not_reached", "not_applicable"]);
+    expect(horizonStatusLabel("achieved")).toBe("期限到達");
+    expect(horizonStatusLabel("in_flight")).toBe("進行中");
+    expect(horizonStatusLabel("truncated_dissolution")).toBe("解散で途切れ");
+    expect(horizonStatusLabel("horizon_not_reached")).toBe("期限未到達");
+    expect(horizonStatusLabel("not_applicable")).toBe("期限の対象外");
   });
 
   it("maps every source type", () => {

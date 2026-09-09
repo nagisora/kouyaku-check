@@ -28,8 +28,9 @@ entries:
       source_url: https://kokkai.ndl.go.jp/txt/121914601X00420251216/100
       source_type: minutes
       diet_session: 219
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
     notes: 主張は2025年参院選比例の選挙公報（名簿届出政党・チームみらい）。公報PDFのファイル名は各選管の掲載に依存するため、選管の公式掲載ページを一次リンクとする。国会側は第219回総務委員会での政治資金質疑。
 
   - id: L02
@@ -45,8 +46,10 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0713-v003.htm
       source_type: vote
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 案件は公職選挙法及び特定電気通信権利侵害対処法の一部改正。附則は検討規定であり、即時の全面解禁ではない。
 
   - id: L03
@@ -62,8 +65,9 @@ entries:
       source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/161
       source_type: minutes
       diet_session: 219
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
     notes: 会議録本人発言で参院選公約のプッシュ型支援に言及し、同日の質疑で申請手続の負担軽減を求めている。
 
   - id: L04
@@ -79,8 +83,10 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0710-v001.htm
       source_type: vote
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 案件は情報通信技術を活用した行政の推進等に関する法律及び情報処理促進法の一部改正。
 
   - id: L05
@@ -96,8 +102,9 @@ entries:
       source_url: https://kokkai.ndl.go.jp/txt/122124293X00220260715/59
       source_type: minutes
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
     notes: 主張は2025年参院選の党マニフェスト（税・社会保障の再構築）と公報の問題意識。党公式の2025年参院選ページを一次リンクとする。行動は国家基本政策委員会合同審査会。
 
   - id: L06
@@ -113,8 +120,9 @@ entries:
       source_url: https://kokkai.ndl.go.jp/txt/121914601X00220251125/167
       source_type: minutes
       diet_session: 219
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: individual
     notes: 会議録で党方針としてOSS公開を述べ、同日に自治体システムへの適用と総務省見解の周知を求めている。
 
   - id: L07
@@ -130,8 +138,10 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0710-v002.htm
       source_type: vote
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 主張は2025年参院選公報および党マニフェスト。公報PDFの安定URLがないため、党の2025年参院選公式ページを一次リンクとする。
 
   - id: L08
@@ -147,8 +157,10 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0713-v004.htm
       source_type: vote
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 案件は科学技術・イノベーション創出の活性化に関する法律の一部改正。
 
   - id: L09
@@ -164,8 +176,10 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/221/221-0724-v006.htm
       source_type: vote
       diet_session: 221
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 案件は国家社会機能継続性確保施策及び副首都の整備に係る施策の推進に関する法律案。提出者は高山聡史。
 
   - id: L10
@@ -183,6 +197,8 @@ entries:
       diet_session: 221
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 党は「高額療養費を守る」と掲げる。当該改正はOTC類似薬負担や出産費用など複数項目の一括法案。賛否理由を述べる本会議発言は確認できず、制度維持との対応は判断できない。
 
   - id: L11
@@ -200,6 +216,8 @@ entries:
       diet_session: 221
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 公報は「子育て減税」。当該改正は防衛財源の加算税等を含む一括法案。反対理由の本会議発言は確認できず、公約との対応は判断できない。
 
   - id: L12

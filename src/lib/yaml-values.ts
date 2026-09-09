@@ -1,5 +1,5 @@
-import { ACTION_KINDS, CLAIM_KINDS, LABELS, OFFICE_STATUSES, SOURCE_TYPES } from "./types";
-import type { ActionKind, ClaimKind, Label, OfficeStatus, SourceType } from "./types";
+import { ACTION_KINDS, AGENCY_CAPACITIES, CLAIM_KINDS, HORIZON_STATUSES, LABELS, OFFICE_STATUSES, SOURCE_TYPES, VOTING_METHODS } from "./types";
+import type { ActionKind, AgencyCapacity, ClaimKind, HorizonStatus, Label, OfficeStatus, SourceType, VotingMethod } from "./types";
 
 export function formatDietSession(value: unknown): string | null {
   if (value === null || value === undefined) {
@@ -32,6 +32,18 @@ export function isActionKind(value: unknown): value is ActionKind {
 
 export function isOfficeStatus(value: unknown): value is OfficeStatus {
   return typeof value === "string" && OFFICE_STATUSES.some((item) => item === value);
+}
+
+export function isAgencyCapacity(value: unknown): value is AgencyCapacity {
+  return typeof value === "string" && AGENCY_CAPACITIES.some((item) => item === value);
+}
+
+export function isVotingMethod(value: unknown): value is VotingMethod {
+  return typeof value === "string" && VOTING_METHODS.some((item) => item === value);
+}
+
+export function isHorizonStatus(value: unknown): value is HorizonStatus {
+  return typeof value === "string" && HORIZON_STATUSES.some((item) => item === value);
 }
 
 export function toMessage(value: unknown): string {

@@ -28,8 +28,9 @@ entries:
       source_type: minutes
       diet_session: 219
       action_kind: speech
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: individual
     notes: 2026-02-25の代表質問でも同趣旨を繰り返した。https://kokkai.ndl.go.jp/txt/122105254X00420260225/3
 
   - id: L02
@@ -48,6 +49,8 @@ entries:
       action_kind: caucus_position
     label: ズレ
     claim_kind: hard
+    agency_capacity: caucus_or_party
+    agency_actor: 国民民主党・無所属クラブ
     notes: 基礎控除等は上がったが178万円ではない。国税庁の令和7年分改正。予算委でも178万円未達を問うた。本人の記名投票は置いていない。https://www.nta.go.jp/users/gensen/2025kiso/index.htm https://kokkai.ndl.go.jp/txt/121705261X02020250313/43
 
   - id: L03
@@ -64,8 +67,10 @@ entries:
       source_type: bill
       diet_session: 218
       action_kind: other_member_bill
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: caucus_or_party
+    agency_actor: 賛成者リスト
     notes: 提出者は重徳和彦君外。本人提出の衆法ではない。会派も賛成。
 
   - id: L04
@@ -84,6 +89,7 @@ entries:
       action_kind: speech
     label: ズレ
     claim_kind: hard
+    agency_capacity: individual
     notes: 国家基本政策委員会合同審査会での発言。一律5%減税の立法は対照していない。
 
   - id: L05
@@ -100,8 +106,9 @@ entries:
       source_type: minutes
       diet_session: 221
       action_kind: speech
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: individual
     notes: 代表質問で食料品ゼロの懸念と単一税率の対案を示し、党首討論で飲食料品ゼロ自体には賛意も述べた。
 
   - id: L06
@@ -120,6 +127,7 @@ entries:
       action_kind: speech
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
     notes: 主張は2026年の党重点政策。観察期間内に住民税178万円の立法は確認できない。
 
   - id: L07
@@ -136,8 +144,9 @@ entries:
       source_type: minutes
       diet_session: 221
       action_kind: speech
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: individual
     notes: 会議録本人発言で優先項目を明示した。発議文書はこの対照に含めていない。
 
   - id: L08
@@ -154,8 +163,10 @@ entries:
       source_type: bill
       diet_session: 217
       action_kind: other_member_bill
-    label: 過程一致
+    label: 行動一致
     claim_kind: hard
+    agency_capacity: caucus_or_party
+    agency_actor: 賛成者リスト
     notes: 提出者は円より子君外。本人提出の衆法ではない。閉会中審査。
 
   - id: L09
@@ -174,6 +185,8 @@ entries:
       action_kind: other_member_bill
     label: 不明
     claim_kind: soft
+    agency_capacity: caucus_or_party
+    agency_actor: 賛成者リスト
     notes: 提出者は落合貴之君外。条項が主張と一致するかは未確認。閉会中審査。
 
   - id: L10
@@ -192,6 +205,7 @@ entries:
       action_kind: speech
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
     notes: 発言は柏崎刈羽の再稼働と電気代。賦課金廃止の立法は確認できない。
 
   - id: L11
@@ -208,8 +222,10 @@ entries:
       source_type: bill
       diet_session: 217
       action_kind: other_member_bill
-    label: 過程一致
+    label: 行動一致
     claim_kind: soft
+    agency_capacity: caucus_or_party
+    agency_actor: 賛成者リスト
     notes: 提出者は田中健君外。本人提出の衆法ではない。閉会中審査。
 
   - id: L12
@@ -228,4 +244,5 @@ entries:
       action_kind: speech
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
     notes: 廃止の衆法は見当たらない。発言は食料品ゼロに伴う事務負担の指摘。
