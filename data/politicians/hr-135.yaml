@@ -1,0 +1,249 @@
+id: hr-135
+slug: kawamura-takashi
+name: 河村たかし
+name_kana: かわむら たかし
+house: 衆議院
+party: 無所属（減税日本／減税こども）
+profile_url: https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/135.html
+updated_at: "2026-09-09"
+window:
+  from: "2024-11-11"
+  to: null
+meta:
+  district: 愛知県第1区
+  elected_on: "2024-10-27"
+  window_note: 第50回衆院選で愛知1区当選。観察は第215回以降。無所属で、減税日本および減税こどもとの関係がある。会派名は時期により日本保守党・減税保守こども等。名古屋市長時代は背景のみ。
+entries:
+  - id: L01
+    topic: consumption-tax-cut
+    claim:
+      summary: 消費税を減税する
+      date: "2026-05-29"
+      source_url: https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/009522120260529010.htm
+      source_type: minutes
+    action:
+      summary: 財金委で消費税減税の必要性を質疑した
+      date: "2026-05-29"
+      source_url: https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/009522120260529010.htm
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 一致
+    notes: 会議録本人発言。減税の哲学と消費税減税の実施を求めた。記名投票は置いていない。
+
+  - id: L02
+    topic: consumption-tax-bill
+    claim:
+      summary: 消費税の恒久減税の衆法を出す
+      date: "2026-05-29"
+      source_url: https://www.shugiin.go.jp/internet/itdb_kaigiroku.nsf/html/kaigiroku/009522120260529010.htm
+      source_type: minutes
+    action:
+      summary: 第221回の衆法一覧に該当法案は見当たらない
+      date: null
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/kaiji221.htm
+      source_type: none
+      diet_session: 221
+    label: 不明
+    notes: 観察期間内に本人提出の消費税減税衆法は確認できない。
+
+  - id: L03
+    topic: political-heir-ban
+    claim:
+      summary: ウラ金の家業化と世襲を禁ずる
+      date: "2025-01-24"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/youkou/g21605009.htm
+      source_type: bill
+    action:
+      summary: 政治資金世襲禁止の衆法を共同提出した
+      date: "2025-01-24"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDDD82.htm
+      source_type: bill
+      diet_session: 216
+      action_kind: member_bill
+    label: 一致
+    notes: 提出者一覧に河村たかし君。要綱は国会議員関係政治団体の代表者異動と寄附の制限。閉会中審査。
+
+  - id: L04
+    topic: political-heir
+    claim:
+      summary: 国会議員の世襲を禁ずる
+      date: "2025-12-11"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a219167.htm
+      source_type: statement
+    action:
+      summary: 世襲禁止について質問主意書を提出した
+      date: "2025-12-11"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a219167.htm
+      source_type: statement
+      diet_session: 219
+      action_kind: written_question
+    label: 一致
+    notes: 質問第167号。立法の成否はこの対照に含めていない。
+
+  - id: L05
+    topic: child-education
+    claim:
+      summary: 子どもと教育への投資を増やす
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221039.htm
+      source_type: statement
+    action:
+      summary: 教育・子ども投資を問う質問主意書を提出した
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221039.htm
+      source_type: statement
+      diet_session: 221
+      action_kind: written_question
+    label: 一致
+    notes: 質問第39号。教育・子ども・デジタル等を公共事業と同様に扱うよう財政法改正を問うた。
+
+  - id: L06
+    topic: proactive-fiscal
+    claim:
+      summary: 積極財政のため財政法を改正する
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221039.htm
+      source_type: statement
+    action:
+      summary: 同じ質問主意書で財政法4条の改正を問うた
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221039.htm
+      source_type: statement
+      diet_session: 221
+      action_kind: written_question
+    label: 一致
+    notes: L05と同じ主意書。真の積極財政を実現するための財政法第四条等の改正。
+
+  - id: L07
+    topic: political-funds
+    claim:
+      summary: 政治資金を即時公開する
+      date: "2024-12-17"
+      source_url: https://kokkai.ndl.go.jp/txt/121604575X00720241217/130
+      source_type: minutes
+    action:
+      summary: 政治改革特別委で電子決済による即時公開を求めた
+      date: "2024-12-17"
+      source_url: https://kokkai.ndl.go.jp/txt/121604575X00720241217/130
+      source_type: minutes
+      diet_session: 216
+      action_kind: speech
+    label: 一致
+    notes: 会議録本人発言。記名投票は置いていない。
+
+  - id: L08
+    topic: my-number
+    claim:
+      summary: マイナンバー制度に反対する
+      date: "2026-06-10"
+      source_url: https://kokkai.ndl.go.jp/txt/122104376X01120260610/162
+      source_type: minutes
+    action:
+      summary: 財金委でマイナンバーは管理主義だと述べた
+      date: "2026-06-10"
+      source_url: https://kokkai.ndl.go.jp/txt/122104376X01120260610/162
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 一致
+    notes: 会議録本人発言。暗号資産課税との矛盾を問うた。
+
+  - id: L09
+    topic: animal-welfare
+    claim:
+      summary: 犬猫の殺処分をゼロにする
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221040.htm
+      source_type: statement
+    action:
+      summary: 愛護センター業務の質問主意書を提出した
+      date: "2026-07-21"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a221040.htm
+      source_type: statement
+      diet_session: 221
+      action_kind: written_question
+    label: 一致
+    notes: 質問第40号。繁殖制限の周知と愛護センター業務への追加を問うた。殺処分ゼロの立法は確認していない。
+
+  - id: L10
+    topic: high-school-exam
+    claim:
+      summary: 高校入試を廃止する
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に国会での行動は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: null
+    label: 不明
+    notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
+
+  - id: L11
+    topic: local-volunteer
+    claim:
+      summary: 地方議員をボランティア化する
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に国会での行動は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: null
+    label: 不明
+    notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
+
+  - id: L12
+    topic: dark-jobs
+    claim:
+      summary: 闇バイトを撲滅する
+      date: null
+      source_url: ""
+      source_type: none
+    action:
+      summary: 観察期間内に国会での行動は見当たらない
+      date: null
+      source_url: ""
+      source_type: none
+      diet_session: null
+    label: 不明
+    notes: 観察期間内の衆法・質問主意書・会議録は確認できない。
+
+  - id: L13
+    topic: poster-dignity
+    claim:
+      summary: 選挙ポスターの品位を保つ
+      date: "2025-02-20"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/youkou/g21705009.htm
+      source_type: bill
+    action:
+      summary: ポスター品位の衆法に賛成者として名を連ねた
+      date: "2025-02-20"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDE53A.htm
+      source_type: bill
+      diet_session: 217
+      action_kind: other_member_bill
+    label: 一致
+    notes: 提出者は逢沢一郎君外。本人提出の衆法ではない。2025-04-02公布。
+
+  - id: L14
+    topic: rice-price
+    claim:
+      summary: 米価を適正にする
+      date: "2025-12-11"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a219166.htm
+      source_type: statement
+    action:
+      summary: 米の輸出とお米券について質問主意書を出した
+      date: "2025-12-11"
+      source_url: https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a219166.htm
+      source_type: statement
+      diet_session: 219
+      action_kind: written_question
+    label: 不明
+    notes: 質問にとどまり、米価の立法や表決は確認できない。輸出に関する質問は第217回。https://www.shugiin.go.jp/internet/itdb_shitsumon.nsf/html/shitsumon/a217228.htm

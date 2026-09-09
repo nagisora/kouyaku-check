@@ -2,8 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { entrySlot, formatDietSession, isActionKind, isLabel, isSourceType } from "./yaml-values";
-import type { Action, Claim, Entry, Politician, PoliticianMeta } from "./types";
+import { entrySlot, formatDietSession, isActionKind, isLabel, isOfficeStatus, isSourceType } from "./yaml-values";
+import type { Action, Claim, Entry, OfficeStatus, Politician, PoliticianMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -58,6 +58,7 @@ function parseMeta(raw: unknown): PoliticianMeta | undefined {
     wikidata: typeof raw.wikidata === "string" ? raw.wikidata : undefined,
     elected_on: typeof raw.elected_on === "string" ? raw.elected_on : undefined,
     in_office_from: typeof raw.in_office_from === "string" ? raw.in_office_from : undefined,
+    left_office_on: typeof raw.left_office_on === "string" ? raw.left_office_on : undefined,
     district: typeof raw.district === "string" ? raw.district : undefined,
     window_note: typeof raw.window_note === "string" ? raw.window_note : undefined,
   };
@@ -70,6 +71,16 @@ function parseClaim(raw: Record<string, unknown>, slot: string): Claim {
     source_url: typeof raw.source_url === "string" ? raw.source_url : "",
     source_type: asSourceType(raw.source_type, `${slot}.claim`),
   };
+}
+
+function parseOfficeStatus(value: unknown): OfficeStatus {
+  if (value === undefined || value === null || value === "") {
+    return "in_office";
+  }
+  if (!isOfficeStatus(value)) {
+    throw new Error("Invalid office_status");
+  }
+  return value;
 }
 
 function parseActionKind(value: unknown, field: string) {
@@ -143,6 +154,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
     party: asString(raw.party, "party"),
     profile_url: asString(raw.profile_url, "profile_url"),
     updated_at: asString(raw.updated_at, "updated_at"),
+    office_status: parseOfficeStatus(raw.office_status),
     window: {
       from: asString(windowRaw.from, "window.from"),
       to: asOptionalString(windowRaw.to),

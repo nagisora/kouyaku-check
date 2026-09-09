@@ -242,8 +242,46 @@ a:hover {
 }
 
 .member-card h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
   margin: 0 0 4px;
   font-size: 1.2rem;
+}
+
+.office-badge,
+.status-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.6em;
+  padding: 0 10px;
+  border: 1px solid var(--gap-line);
+  border-radius: 999px;
+  background: var(--gap-bg);
+  color: var(--gap-ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.status-block {
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  background: var(--gap-bg);
+  border: 1px solid var(--gap-line);
+  border-radius: var(--radius);
+}
+
+.status-block h2 {
+  margin: 8px 0 6px;
+  font-size: 1.15rem;
+}
+
+.status-block p {
+  margin: 0;
+  color: var(--gap-ink);
+  font-size: 0.92rem;
 }
 
 .member-meta {

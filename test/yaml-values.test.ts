@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDietSession, isActionKind, isLabel, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
+import { formatDietSession, isActionKind, isLabel, isOfficeStatus, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
 
 describe("formatDietSession", () => {
   it("keeps empty values as null", () => {
@@ -42,7 +42,18 @@ describe("isActionKind", () => {
   it("accepts cabinet and other-member kinds only", () => {
     expect(isActionKind("cabinet_bill")).toBe(true);
     expect(isActionKind("pm_speech")).toBe(true);
+    expect(isActionKind("member_bill")).toBe(true);
+    expect(isActionKind("speech")).toBe(true);
+    expect(isActionKind("written_question")).toBe(true);
+    expect(isActionKind("caucus_position")).toBe(true);
+    expect(isActionKind("resignation")).toBe(true);
     expect(isActionKind("floor_vote")).toBe(false);
+  });
+
+  it("accepts office status values only", () => {
+    expect(isOfficeStatus("in_office")).toBe(true);
+    expect(isOfficeStatus("not_in_office")).toBe(true);
+    expect(isOfficeStatus("sitting")).toBe(false);
   });
 });
 

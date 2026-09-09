@@ -1,0 +1,219 @@
+id: hr-258
+slug: tamaki-yuichiro
+name: 玉木雄一郎
+name_kana: たまき ゆういちろう
+house: 衆議院
+party: 国民民主党・無所属クラブ
+profile_url: https://www.shugiin.go.jp/internet/itdb_giinprof.nsf/html/profile/258.html
+updated_at: "2026-09-09"
+window:
+  from: "2024-11-11"
+  to: null
+meta:
+  wikidata: Q11572647
+  district: 香川県第2区
+  window_note: 第50回衆院選後の第215回（2024-11-11召集）以降を観察。対照する行動は衆法賛成者・会派態度・国会発言が中心。本人の記名投票は置いていない。
+entries:
+  - id: L01
+    topic: take-home-pay
+    claim:
+      summary: 対決より解決で手取りを増やす
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies-message/
+      source_type: party
+    action:
+      summary: 本会議で対決より解決と手取り増を述べる
+      date: "2025-11-05"
+      source_url: https://kokkai.ndl.go.jp/txt/121905254X00420251105/6
+      source_type: minutes
+      diet_session: 219
+      action_kind: speech
+    label: 一致
+    notes: 2026-02-25の代表質問でも同趣旨を繰り返した。https://kokkai.ndl.go.jp/txt/122105254X00420260225/3
+
+  - id: L02
+    topic: income-tax-178
+    claim:
+      summary: 所得税の壁を103万円から178万円へ上げる
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies/policy1/
+      source_type: party
+    action:
+      summary: 会派は所得税法改正の閣法に反対した
+      date: "2025-03-04"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDE0CA.htm
+      source_type: bill
+      diet_session: 217
+      action_kind: caucus_position
+    label: ズレ
+    notes: 基礎控除等は上がったが178万円ではない。国税庁の令和7年分改正。予算委でも178万円未達を問うた。本人の記名投票は置いていない。https://www.nta.go.jp/users/gensen/2025kiso/index.htm https://kokkai.ndl.go.jp/txt/121705261X02020250313/43
+
+  - id: L03
+    topic: gasoline-tax
+    claim:
+      summary: ガソリンの暫定税率を廃止する
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies-message/
+      source_type: party
+    action:
+      summary: 暫定税率廃止の衆法に賛成者として名を連ねた
+      date: "2025-11-25"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE024E.htm
+      source_type: bill
+      diet_session: 218
+      action_kind: other_member_bill
+    label: 一致
+    notes: 提出者は重徳和彦君外。本人提出の衆法ではない。会派も賛成。
+
+  - id: L04
+    topic: consumption-tax-5
+    claim:
+      summary: 消費税を一律5%に減税する
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies-message/
+      source_type: party
+    action:
+      summary: 党首討論で今は減税すべきときではないと述べた
+      date: "2026-07-15"
+      source_url: https://kokkai.ndl.go.jp/txt/122124293X00220260715/8
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: ズレ
+    notes: 国家基本政策委員会合同審査会での発言。一律5%減税の立法は対照していない。
+
+  - id: L05
+    topic: food-zero-alternative
+    claim:
+      summary: 減税するなら食料品ゼロでなく単一税率にする
+      date: "2026-02-25"
+      source_url: https://kokkai.ndl.go.jp/txt/122105254X00420260225/3
+      source_type: minutes
+    action:
+      summary: 党首討論でも単一税率の対案を述べた
+      date: "2026-07-15"
+      source_url: https://kokkai.ndl.go.jp/txt/122124293X00220260715/4
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 一致
+    notes: 代表質問で食料品ゼロの懸念と単一税率の対案を示し、党首討論で飲食料品ゼロ自体には賛意も述べた。
+
+  - id: L06
+    topic: resident-tax-178
+    claim:
+      summary: 住民税の壁を110万円から178万円へ上げる
+      date: "2026-02-25"
+      source_url: https://election2026.new-kokumin.jp/policies/top-policies/policy1/
+      source_type: party
+    action:
+      summary: 本会議で178万円を目指す引上げを求めた
+      date: "2026-02-25"
+      source_url: https://kokkai.ndl.go.jp/txt/122105254X00420260225/3
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 不明
+    notes: 主張は2026年の党重点政策。観察期間内に住民税178万円の立法は確認できない。
+
+  - id: L07
+    topic: constitution-priority
+    claim:
+      summary: 国会機能維持と合区解消を改憲の優先とする
+      date: "2026-07-16"
+      source_url: https://kokkai.ndl.go.jp/txt/122104183X01320260716/8
+      source_type: minutes
+    action:
+      summary: 憲法審査会で優先2項目を述べ審査の加速を求めた
+      date: "2026-07-16"
+      source_url: https://kokkai.ndl.go.jp/txt/122104183X01320260716/8
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 一致
+    notes: 会議録本人発言で優先項目を明示した。発議文書はこの対照に含めていない。
+
+  - id: L08
+    topic: selective-surnames
+    claim:
+      summary: 選択的夫婦別姓を導入する
+      date: "2025-05-28"
+      source_url: https://new-kokumin.jp/news/diet/20250528_4
+      source_type: party
+    action:
+      summary: 党提出の民法改正衆法に賛成者として名を連ねた
+      date: "2025-05-28"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDF12A.htm
+      source_type: bill
+      diet_session: 217
+      action_kind: other_member_bill
+    label: 一致
+    notes: 提出者は円より子君外。本人提出の衆法ではない。閉会中審査。
+
+  - id: L09
+    topic: political-funds
+    claim:
+      summary: 政治資金の透明性を高める
+      date: "2026-03-02"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE153E.htm
+      source_type: bill
+    action:
+      summary: 政治資金規正法改正衆法に賛成者として名を連ねた
+      date: "2026-03-02"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE153E.htm
+      source_type: bill
+      diet_session: 221
+      action_kind: other_member_bill
+    label: 不明
+    notes: 提出者は落合貴之君外。条項が主張と一致するかは未確認。閉会中審査。
+
+  - id: L10
+    topic: nuclear-surcharge
+    claim:
+      summary: 再エネ賦課金を止め電気代を下げる
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies-message/
+      source_type: party
+    action:
+      summary: 予算委で原発再稼働と電気代に言及した
+      date: "2025-12-10"
+      source_url: https://kokkai.ndl.go.jp/txt/121905261X00720251210/234
+      source_type: minutes
+      diet_session: 219
+      action_kind: speech
+    label: 不明
+    notes: 発言は柏崎刈羽の再稼働と電気代。賦課金廃止の立法は確認できない。
+
+  - id: L11
+    topic: youth-income-tax
+    claim:
+      summary: 若者の所得税負担を軽減する
+      date: "2025-04-10"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDEEFE.htm
+      source_type: bill
+    action:
+      summary: 若者所得控除の衆法に賛成者として名を連ねた
+      date: "2025-04-10"
+      source_url: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DDEEFE.htm
+      source_type: bill
+      diet_session: 217
+      action_kind: other_member_bill
+    label: 一致
+    notes: 提出者は田中健君外。本人提出の衆法ではない。閉会中審査。
+
+  - id: L12
+    topic: invoice
+    claim:
+      summary: インボイスを廃止する
+      date: "2024-10-15"
+      source_url: https://election2024.new-kokumin.jp/policies-message/
+      source_type: party
+    action:
+      summary: 本会議で複数税率とインボイスの問題に言及
+      date: "2026-02-25"
+      source_url: https://kokkai.ndl.go.jp/txt/122105254X00420260225/3
+      source_type: minutes
+      diet_session: 221
+      action_kind: speech
+    label: 不明
+    notes: 廃止の衆法は見当たらない。発言は食料品ゼロに伴う事務負担の指摘。
