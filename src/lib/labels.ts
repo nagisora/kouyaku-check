@@ -1,17 +1,17 @@
-import type { ActionKind, Entry, Label, LabelCounts, OfficeStatus, Politician, SourceType } from "./types";
+import type { ActionKind, AgencyCapacity, Entry, HorizonStatus, Label, LabelCounts, OfficeStatus, Politician, SourceType, VotingMethod } from "./types";
 import { toMessage } from "./yaml-values";
 
 function emptyLabelCounts(): LabelCounts {
-  return { 過程一致: 0, 結果到達: 0, ズレ: 0, 不明: 0 };
+  return { 行動一致: 0, 公約実現: 0, ズレ: 0, 不明: 0 };
 }
 
 function incrementLabelCount(counts: LabelCounts, label: Label): void {
   switch (label) {
-    case "過程一致":
-      counts.過程一致 += 1;
+    case "行動一致":
+      counts.行動一致 += 1;
       return;
-    case "結果到達":
-      counts.結果到達 += 1;
+    case "公約実現":
+      counts.公約実現 += 1;
       return;
     case "ズレ":
       counts.ズレ += 1;
@@ -35,15 +35,15 @@ export function countLabels(entries: Entry[]): LabelCounts {
 }
 
 export function formatLabelCounts(counts: LabelCounts): string {
-  return `${toMessage(counts.過程一致)} 過程一致 / ${toMessage(counts.結果到達)} 結果到達 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`;
+  return `${toMessage(counts.行動一致)} 行動一致 / ${toMessage(counts.公約実現)} 公約実現 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`;
 }
 
-function labelTone(label: Label): "process" | "outcome" | "gap" | "unknown" {
+function labelTone(label: Label): "action" | "realized" | "gap" | "unknown" {
   switch (label) {
-    case "過程一致":
-      return "process";
-    case "結果到達":
-      return "outcome";
+    case "行動一致":
+      return "action";
+    case "公約実現":
+      return "realized";
     case "ズレ":
       return "gap";
     case "不明":
@@ -117,6 +117,61 @@ export function actionKindLabel(kind: ActionKind): string {
 
 export function actionSideHeading(kind: ActionKind | undefined): string {
   return kind === undefined ? "国会での行動" : "行動";
+}
+
+export function agencyCapacityLabel(capacity: AgencyCapacity): string {
+  switch (capacity) {
+    case "individual":
+      return "本人";
+    case "caucus_or_party":
+      return "会派・党";
+    case "cabinet_or_executive":
+      return "内閣・行政";
+    case "unknown":
+      return "主体不明";
+    default: {
+      const _exhaustive: never = capacity;
+      return _exhaustive;
+    }
+  }
+}
+
+export function votingMethodLabel(method: VotingMethod): string {
+  switch (method) {
+    case "named_rollcall":
+      return "記名投票";
+    case "pushbutton":
+      return "押しボタン式";
+    case "standing_or_voice":
+      return "起立・声認";
+    case "no_objection":
+      return "異議なし";
+    case "unknown":
+      return "表決方法不明";
+    default: {
+      const _exhaustive: never = method;
+      return _exhaustive;
+    }
+  }
+}
+
+export function horizonStatusLabel(status: HorizonStatus): string {
+  switch (status) {
+    case "achieved":
+      return "期限到達";
+    case "in_flight":
+      return "進行中";
+    case "truncated_dissolution":
+      return "解散で途切れ";
+    case "horizon_not_reached":
+      return "期限未到達";
+    case "not_applicable":
+      return "期限の対象外";
+    default: {
+      const _exhaustive: never = status;
+      return _exhaustive;
+    }
+  }
 }
 
 export function profileLinkLabel(house: string): string {

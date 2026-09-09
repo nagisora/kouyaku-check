@@ -3,15 +3,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   actionKindLabel,
   actionSideHeading,
+  agencyCapacityLabel,
   affiliationLine,
   countCardClassName,
   countLabels,
+  horizonStatusLabel,
   isSittingMember,
   labelClassName,
   officeStatusLabel,
   profileLinkLabel,
   sourceTypeLabel,
   topicLabel,
+  votingMethodLabel,
 } from "../../lib/labels";
 import { loadPoliticians, politicianRoutes } from "../../lib/politicians";
 import { LABELS, type Politician } from "../../lib/types";
@@ -46,11 +49,26 @@ function formatDate(value: string | null): string {
 function formatSession(value: string | number | null): string | null {
   return value === null || value === "" ? null : `第${value}回`;
 }
+
+function entryTagItems(entry: Politician["entries"][number]): string[] {
+  const tags: string[] = [];
+  if (entry.agency_capacity !== undefined) {
+    const actor = entry.agency_actor === undefined ? "" : `（${entry.agency_actor}）`;
+    tags.push(`${agencyCapacityLabel(entry.agency_capacity)}${actor}`);
+  }
+  if (entry.voting_method !== undefined) {
+    tags.push(votingMethodLabel(entry.voting_method));
+  }
+  if (entry.horizon_status !== undefined) {
+    tags.push(horizonStatusLabel(entry.horizon_status));
+  }
+  return tags;
+}
 ---
 
 <BaseLayout
   title={`${politician.name} — 公約チェック`}
-  description={`${politician.name}（${politician.party}）の発言と国会行動の対照。過程一致・結果到達・ズレ・不明のみ。`}
+  description={`${politician.name}（${politician.party}）の発言と国会行動の対照。行動一致・公約実現・ズレ・不明のみ。`}
   current="politician"
 >
   {
@@ -104,6 +122,7 @@ function formatSession(value: string | number | null): string | null {
       politician.entries.map((entry) => {
         const session = formatSession(entry.action.diet_session);
         const actionKind = entry.action.action_kind;
+        const tags = entryTagItems(entry);
         return (
           <article class="entry-card" id={entry.id}>
             <div class="entry-head">
@@ -159,6 +178,15 @@ function formatSession(value: string | number | null): string | null {
                 </p>
               </div>
             </div>
+            {
+              tags.length > 0 ? (
+                <p class="entry-tags">
+                  {tags.map((tag) => (
+                    <span class="kind-badge">{tag}</span>
+                  ))}
+                </p>
+              ) : null
+            }
             {entry.notes && <p class="notes">{entry.notes}</p>}
           </article>
         );

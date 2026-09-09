@@ -3,7 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import yaml from "js-yaml";
 
-type Label = "過程一致" | "結果到達" | "ズレ" | "不明";
+type Label = "行動一致" | "公約実現" | "ズレ" | "不明";
 type ClaimKind = "hard" | "soft";
 type LabelCounts = Record<Label, number>;
 
@@ -18,29 +18,32 @@ interface PinnedLedger {
 }
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
-const LABEL_SET: ReadonlySet<string> = new Set(["過程一致", "結果到達", "ズレ", "不明"]);
+const LABEL_SET: ReadonlySet<string> = new Set(["行動一致", "公約実現", "ズレ", "不明"]);
 const CLAIM_KIND_SET: ReadonlySet<string> = new Set(["hard", "soft"]);
 const SOURCE_TYPE_SET: ReadonlySet<string> = new Set(["bulletin", "party", "minutes", "vote", "none", "statement", "bill"]);
+const AGENCY_CAPACITY_SET: ReadonlySet<string> = new Set(["individual", "caucus_or_party", "cabinet_or_executive", "unknown"]);
+const VOTING_METHOD_SET: ReadonlySet<string> = new Set(["named_rollcall", "pushbutton", "standing_or_voice", "no_objection", "unknown"]);
+const HORIZON_STATUS_SET: ReadonlySet<string> = new Set(["achieved", "in_flight", "truncated_dissolution", "horizon_not_reached", "not_applicable"]);
 
 const PINNED_LEDGERS: Record<string, PinnedLedger> = {
   "hc-7025005": {
-    counts: { 過程一致: 9, 結果到達: 0, ズレ: 0, 不明: 3 },
+    counts: { 行動一致: 9, 公約実現: 0, ズレ: 0, 不明: 3 },
     entryCount: 12,
   },
   "hr-230": {
-    counts: { 過程一致: 4, 結果到達: 6, ズレ: 1, 不明: 2 },
+    counts: { 行動一致: 4, 公約実現: 6, ズレ: 1, 不明: 2 },
     entryCount: 13,
   },
   "hr-258": {
-    counts: { 過程一致: 6, 結果到達: 0, ズレ: 2, 不明: 4 },
+    counts: { 行動一致: 6, 公約実現: 0, ズレ: 2, 不明: 4 },
     entryCount: 12,
   },
   "hr-135": {
-    counts: { 過程一致: 9, 結果到達: 0, ズレ: 0, 不明: 5 },
+    counts: { 行動一致: 9, 公約実現: 0, ズレ: 0, 不明: 5 },
     entryCount: 14,
   },
   "hc-7019010": {
-    counts: { 過程一致: 0, 結果到達: 2, ズレ: 0, 不明: 5 },
+    counts: { 行動一致: 0, 公約実現: 2, ズレ: 0, 不明: 5 },
     entryCount: 7,
   },
 };
@@ -92,20 +95,20 @@ function isClaimKind(value: unknown): value is ClaimKind {
 }
 
 function emptyCounts(): LabelCounts {
-  return { 過程一致: 0, 結果到達: 0, ズレ: 0, 不明: 0 };
+  return { 行動一致: 0, 公約実現: 0, ズレ: 0, 不明: 0 };
 }
 
 function formatCounts(counts: LabelCounts): string {
-  return `${toMessage(counts.過程一致)} 過程一致 / ${toMessage(counts.結果到達)} 結果到達 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`;
+  return `${toMessage(counts.行動一致)} 行動一致 / ${toMessage(counts.公約実現)} 公約実現 / ${toMessage(counts.ズレ)} ズレ / ${toMessage(counts.不明)} 不明`;
 }
 
 function addCount(counts: LabelCounts, label: Label): void {
   switch (label) {
-    case "過程一致":
-      counts.過程一致 += 1;
+    case "行動一致":
+      counts.行動一致 += 1;
       return;
-    case "結果到達":
-      counts.結果到達 += 1;
+    case "公約実現":
+      counts.公約実現 += 1;
       return;
     case "ズレ":
       counts.ズレ += 1;
@@ -121,15 +124,15 @@ function addCount(counts: LabelCounts, label: Label): void {
 }
 
 function countsMatch(actual: LabelCounts, expected: LabelCounts): boolean {
-  return actual.過程一致 === expected.過程一致 && actual.結果到達 === expected.結果到達 && actual.ズレ === expected.ズレ && actual.不明 === expected.不明;
+  return actual.行動一致 === expected.行動一致 && actual.公約実現 === expected.公約実現 && actual.ズレ === expected.ズレ && actual.不明 === expected.不明;
 }
 
 function shouldWarnSoftOnlyProcess(entries: readonly QualityEntry[]): boolean {
-  const processEntries = entries.filter((entry) => entry.label === "過程一致");
+  const processEntries = entries.filter((entry) => entry.label === "行動一致");
   if (processEntries.length === 0) {
     return false;
   }
-  const reachedOutcome = entries.some((entry) => entry.label === "結果到達");
+  const reachedOutcome = entries.some((entry) => entry.label === "公約実現");
   if (reachedOutcome) {
     return false;
   }
@@ -147,6 +150,32 @@ function requireTextField(fileName: string, field: string, value: unknown): void
   if (asText(value).trim() === "") {
     fail(`${fileName}: missing ${field}`);
   }
+}
+
+function readOptionalTagged(value: unknown, field: string, allowed: ReadonlySet<string>, fileName: string, entryId: string): void {
+  if (value === undefined || value === null || value === "") {
+    return;
+  }
+  if (typeof value !== "string" || !allowed.has(value)) {
+    fail(`${fileName}: invalid ${field} at ${entryId}`);
+  }
+}
+
+function readAgencyActor(entry: Record<string, unknown>, fileName: string, entryId: string): void {
+  const value = entry.agency_actor;
+  if (value === undefined || value === null || value === "") {
+    return;
+  }
+  if (typeof value !== "string") {
+    fail(`${fileName}: invalid agency_actor at ${entryId}`);
+  }
+}
+
+function readOptionalEntryFields(entry: Record<string, unknown>, fileName: string, entryId: string): void {
+  readOptionalTagged(entry.agency_capacity, "agency_capacity", AGENCY_CAPACITY_SET, fileName, entryId);
+  readOptionalTagged(entry.voting_method, "voting_method", VOTING_METHOD_SET, fileName, entryId);
+  readOptionalTagged(entry.horizon_status, "horizon_status", HORIZON_STATUS_SET, fileName, entryId);
+  readAgencyActor(entry, fileName, entryId);
 }
 
 function readClaimKind(entry: Record<string, unknown>, fileName: string, entryId: string): ClaimKind | undefined {
@@ -188,6 +217,7 @@ function validateEntry(fileName: string, entry: unknown, index: number, ids: Set
     fail(`${fileName}: action.summary must be a short paraphrase at ${entryId}`);
   }
   const claimKind = readClaimKind(entry, fileName, entryId);
+  readOptionalEntryFields(entry, fileName, entryId);
   return claimKind === undefined ? { label: labelValue } : { label: labelValue, claim_kind: claimKind };
 }
 
@@ -265,7 +295,7 @@ function validateFile(fileName: string): string | undefined {
   pinLedger(fileName, politicianId, counts, raw.entries.length);
 
   if (shouldWarnSoftOnlyProcess(qualityEntries)) {
-    console.error(`${fileName}: WARN 結果到達が0件で、過程一致がすべて soft です。柔らかい過程だけで台帳を埋めないでください。`);
+    console.error(`${fileName}: WARN 公約実現が0件で、行動一致がすべて soft です。柔らかい過程だけで台帳を埋めないでください。`);
   }
 
   console.log(`${fileName}: ${formatCounts(counts)}`);

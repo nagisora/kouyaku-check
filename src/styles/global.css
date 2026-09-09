@@ -6,12 +6,12 @@
   --line: #e7e0d6;
   --accent: #1f3d5c;
   --link: #1d4e72;
-  --process-bg: #eaf4ee;
-  --process-ink: #3d6b4a;
-  --process-line: #b3d0bd;
-  --outcome-bg: #cfe8d8;
-  --outcome-ink: #14532d;
-  --outcome-line: #5d9a73;
+  --action-bg: #eaf4ee;
+  --action-ink: #3d6b4a;
+  --action-line: #b3d0bd;
+  --realized-bg: #cfe8d8;
+  --realized-ink: #14532d;
+  --realized-line: #5d9a73;
   --gap-bg: #f8efe4;
   --gap-ink: #7c3d12;
   --gap-line: #d4b48a;
@@ -207,16 +207,16 @@ a:hover {
   font-size: 0.82rem;
 }
 
-.count-card.process {
-  background: var(--process-bg);
-  border-color: var(--process-line);
-  color: var(--process-ink);
+.count-card.action {
+  background: var(--action-bg);
+  border-color: var(--action-line);
+  color: var(--action-ink);
 }
 
-.count-card.outcome {
-  background: var(--outcome-bg);
-  border-color: var(--outcome-line);
-  color: var(--outcome-ink);
+.count-card.realized {
+  background: var(--realized-bg);
+  border-color: var(--realized-line);
+  color: var(--realized-ink);
 }
 
 .count-card.gap {
@@ -347,16 +347,16 @@ a:hover {
   letter-spacing: 0.06em;
 }
 
-.label-process {
-  background: var(--process-bg);
-  border-color: var(--process-line);
-  color: var(--process-ink);
+.label-action {
+  background: var(--action-bg);
+  border-color: var(--action-line);
+  color: var(--action-ink);
 }
 
-.label-outcome {
-  background: var(--outcome-bg);
-  border-color: var(--outcome-line);
-  color: var(--outcome-ink);
+.label-realized {
+  background: var(--realized-bg);
+  border-color: var(--realized-line);
+  color: var(--realized-ink);
 }
 
 .label-gap {
@@ -406,6 +406,17 @@ a:hover {
   font-weight: 700;
   letter-spacing: 0.04em;
   vertical-align: middle;
+}
+
+.entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+.entry-tags .kind-badge {
+  margin-left: 0;
 }
 
 .side p {

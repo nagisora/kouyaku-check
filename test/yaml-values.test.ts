@@ -1,5 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { formatDietSession, isActionKind, isClaimKind, isLabel, isOfficeStatus, isSourceType, toMessage, entrySlot } from "../src/lib/yaml-values";
+import {
+  formatDietSession,
+  isActionKind,
+  isAgencyCapacity,
+  isClaimKind,
+  isHorizonStatus,
+  isLabel,
+  isOfficeStatus,
+  isSourceType,
+  isVotingMethod,
+  toMessage,
+  entrySlot,
+} from "../src/lib/yaml-values";
 
 describe("formatDietSession", () => {
   it("keeps empty values as null", () => {
@@ -19,11 +31,13 @@ describe("formatDietSession", () => {
 });
 
 describe("isLabel", () => {
-  it("accepts only 過程一致 / 結果到達 / ズレ / 不明", () => {
-    expect(isLabel("過程一致")).toBe(true);
-    expect(isLabel("結果到達")).toBe(true);
+  it("accepts only 行動一致 / 公約実現 / ズレ / 不明", () => {
+    expect(isLabel("行動一致")).toBe(true);
+    expect(isLabel("公約実現")).toBe(true);
     expect(isLabel("ズレ")).toBe(true);
     expect(isLabel("不明")).toBe(true);
+    expect(isLabel("過程一致")).toBe(false);
+    expect(isLabel("結果到達")).toBe(false);
     expect(isLabel("一致")).toBe(false);
     expect(isLabel("信頼")).toBe(false);
     expect(isLabel(1)).toBe(false);
@@ -65,6 +79,23 @@ describe("isActionKind", () => {
     expect(isOfficeStatus("in_office")).toBe(true);
     expect(isOfficeStatus("not_in_office")).toBe(true);
     expect(isOfficeStatus("sitting")).toBe(false);
+  });
+});
+
+describe("optional entry tags", () => {
+  it("accepts only the coarse agency, voting, and horizon enums", () => {
+    expect(isAgencyCapacity("individual")).toBe(true);
+    expect(isAgencyCapacity("caucus_or_party")).toBe(true);
+    expect(isAgencyCapacity("cabinet_or_executive")).toBe(true);
+    expect(isAgencyCapacity("unknown")).toBe(true);
+    expect(isAgencyCapacity("personal")).toBe(false);
+    expect(isVotingMethod("named_rollcall")).toBe(true);
+    expect(isVotingMethod("standing_or_voice")).toBe(true);
+    expect(isVotingMethod("rollcall")).toBe(false);
+    expect(isHorizonStatus("achieved")).toBe(true);
+    expect(isHorizonStatus("in_flight")).toBe(true);
+    expect(isHorizonStatus("not_applicable")).toBe(true);
+    expect(isHorizonStatus("pending")).toBe(false);
   });
 });
 

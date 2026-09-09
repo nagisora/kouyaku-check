@@ -3,32 +3,32 @@ import { shouldWarnSoftOnlyProcess } from "../src/lib/claim-quality";
 import type { ClaimQualityInput } from "../src/lib/claim-quality";
 
 describe("shouldWarnSoftOnlyProcess", () => {
-  it("warns when there is no 結果到達 and every 過程一致 is soft", () => {
+  it("warns when there is no 公約実現 and every 行動一致 is soft", () => {
     const entries: ClaimQualityInput[] = [
-      { label: "過程一致", claim_kind: "soft" },
-      { label: "過程一致", claim_kind: "soft" },
+      { label: "行動一致", claim_kind: "soft" },
+      { label: "行動一致", claim_kind: "soft" },
       { label: "不明", claim_kind: "hard" },
     ];
     expect(shouldWarnSoftOnlyProcess(entries)).toBe(true);
   });
 
-  it("does not warn when at least one 過程一致 is hard", () => {
+  it("does not warn when at least one 行動一致 is hard", () => {
     const entries: ClaimQualityInput[] = [
-      { label: "過程一致", claim_kind: "soft" },
-      { label: "過程一致", claim_kind: "hard" },
+      { label: "行動一致", claim_kind: "soft" },
+      { label: "行動一致", claim_kind: "hard" },
     ];
     expect(shouldWarnSoftOnlyProcess(entries)).toBe(false);
   });
 
-  it("does not warn when 結果到達 exists", () => {
+  it("does not warn when 公約実現 exists", () => {
     const entries: ClaimQualityInput[] = [
-      { label: "過程一致", claim_kind: "soft" },
-      { label: "結果到達", claim_kind: "hard" },
+      { label: "行動一致", claim_kind: "soft" },
+      { label: "公約実現", claim_kind: "hard" },
     ];
     expect(shouldWarnSoftOnlyProcess(entries)).toBe(false);
   });
 
-  it("does not warn when there are no 過程一致 rows", () => {
+  it("does not warn when there are no 行動一致 rows", () => {
     const entries: ClaimQualityInput[] = [
       { label: "不明", claim_kind: "soft" },
       { label: "ズレ", claim_kind: "hard" },

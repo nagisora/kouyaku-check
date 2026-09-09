@@ -29,8 +29,11 @@ entries:
       source_url: https://www.sangiin.go.jp/japanese/touhyoulist/214/214-1001-v001.pdf
       source_type: vote
       diet_session: 214
-    label: 結果到達
+    label: 公約実現
     claim_kind: hard
+    agency_capacity: individual
+    voting_method: named_rollcall
+    horizon_status: achieved
     notes: 参議院の公式記名投票PDF。観察期間内の公式資料に限る。
 
   - id: L02
@@ -48,6 +51,8 @@ entries:
       diet_session: 214
     label: 不明
     claim_kind: hard
+    agency_capacity: individual
+    voting_method: named_rollcall
     notes: 表決は反対で確認できる。会期反対を掲げる事前の公約との対応は取れない。
 
   - id: L03
@@ -65,6 +70,7 @@ entries:
       diet_session: 214
     label: 不明
     claim_kind: soft
+    agency_capacity: unknown
     notes: 政府開発援助等及び沖縄・北方問題に関する特別委員会の委員。会議録に氏名はあるが本人発言はない。https://kokkai.ndl.go.jp/txt/121415359X00220241009/1
 
   - id: L04
@@ -115,8 +121,10 @@ entries:
       source_type: statement
       diet_session: 215
       action_kind: resignation
-    label: 結果到達
+    label: 公約実現
     claim_kind: hard
+    agency_capacity: individual
+    horizon_status: achieved
     notes: 第215回国会概観に音喜多駿君の退職（6.10.15）と公選法90条による退職の記載。衆議院の議席は得ていない。
 
   - id: L07

@@ -2,8 +2,19 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
-import { entrySlot, formatDietSession, isActionKind, isClaimKind, isLabel, isOfficeStatus, isSourceType } from "./yaml-values";
-import type { Action, Claim, ClaimKind, Entry, OfficeStatus, Politician, PoliticianMeta } from "./types";
+import {
+  entrySlot,
+  formatDietSession,
+  isActionKind,
+  isAgencyCapacity,
+  isClaimKind,
+  isHorizonStatus,
+  isLabel,
+  isOfficeStatus,
+  isSourceType,
+  isVotingMethod,
+} from "./yaml-values";
+import type { Action, AgencyCapacity, Claim, ClaimKind, Entry, HorizonStatus, OfficeStatus, Politician, PoliticianMeta, VotingMethod } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data", "politicians");
 
@@ -93,14 +104,63 @@ function parseActionKind(value: unknown, field: string) {
   return value;
 }
 
-function parseClaimKind(value: unknown, field: string): ClaimKind | undefined {
+function parseOptionalEnum<T extends string>(value: unknown, guard: (candidate: unknown) => candidate is T, field: string): T | undefined {
   if (value === undefined || value === null || value === "") {
     return undefined;
   }
-  if (!isClaimKind(value)) {
-    throw new Error(`Invalid claim_kind for ${field}`);
+  if (!guard(value)) {
+    throw new Error(`Invalid value for ${field}`);
   }
   return value;
+}
+
+function parseClaimKind(value: unknown, field: string): ClaimKind | undefined {
+  return parseOptionalEnum(value, isClaimKind, field);
+}
+
+function parseAgencyCapacity(value: unknown, field: string): AgencyCapacity | undefined {
+  return parseOptionalEnum(value, isAgencyCapacity, field);
+}
+
+function parseVotingMethod(value: unknown, field: string): VotingMethod | undefined {
+  return parseOptionalEnum(value, isVotingMethod, field);
+}
+
+function parseHorizonStatus(value: unknown, field: string): HorizonStatus | undefined {
+  return parseOptionalEnum(value, isHorizonStatus, field);
+}
+
+function parseAgencyActor(value: unknown, field: string): string | undefined {
+  if (value === undefined || value === null || value === "") {
+    return undefined;
+  }
+  if (typeof value !== "string") {
+    throw new Error(`Invalid ${field}`);
+  }
+  return value;
+}
+
+interface EntryTags {
+  claim_kind?: ClaimKind;
+  agency_capacity?: AgencyCapacity;
+  agency_actor?: string;
+  voting_method?: VotingMethod;
+  horizon_status?: HorizonStatus;
+}
+
+function parseEntryTags(raw: Record<string, unknown>, slot: string): EntryTags {
+  const claimKind = parseClaimKind(raw.claim_kind, `${slot}.claim_kind`);
+  const agencyCapacity = parseAgencyCapacity(raw.agency_capacity, `${slot}.agency_capacity`);
+  const agencyActor = parseAgencyActor(raw.agency_actor, `${slot}.agency_actor`);
+  const votingMethod = parseVotingMethod(raw.voting_method, `${slot}.voting_method`);
+  const horizonStatus = parseHorizonStatus(raw.horizon_status, `${slot}.horizon_status`);
+  return {
+    ...(claimKind === undefined ? {} : { claim_kind: claimKind }),
+    ...(agencyCapacity === undefined ? {} : { agency_capacity: agencyCapacity }),
+    ...(agencyActor === undefined ? {} : { agency_actor: agencyActor }),
+    ...(votingMethod === undefined ? {} : { voting_method: votingMethod }),
+    ...(horizonStatus === undefined ? {} : { horizon_status: horizonStatus }),
+  };
 }
 
 function parseAction(raw: Record<string, unknown>, slot: string): Action {
@@ -129,15 +189,13 @@ function parseEntry(raw: unknown, index: number, filePath: string): Entry {
   if (!isLabel(label)) {
     throw new Error(`Invalid label in ${slot} of ${filePath}`);
   }
-  const claimKind = parseClaimKind(raw.claim_kind, `${slot}.claim_kind`);
-
   return {
     id: asString(raw.id, `${slot}.id`),
     topic: asString(raw.topic, `${slot}.topic`),
     claim: parseClaim(claim, slot),
     action: parseAction(action, slot),
     label,
-    ...(claimKind === undefined ? {} : { claim_kind: claimKind }),
+    ...parseEntryTags(raw, slot),
     notes: typeof raw.notes === "string" ? raw.notes : "",
   };
 }
