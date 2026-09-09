@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { compareFileNames } from "./file-names";
+import { formatDietSession } from "./yaml-values";
 import type { Politician } from "./types";
 import { LABELS, SOURCE_TYPES } from "./types";
 
@@ -117,7 +118,7 @@ function parsePolitician(raw: unknown, filePath: string): Politician {
           date: asOptionalString(action.date),
           source_url: typeof action.source_url === "string" ? action.source_url : "",
           source_type: asSourceType(action.source_type, `entries[${index}].action`),
-          diet_session: action.diet_session === null || action.diet_session === undefined ? null : String(action.diet_session),
+          diet_session: formatDietSession(action.diet_session),
         },
         label: label as (typeof LABELS)[number],
         notes: typeof entry.notes === "string" ? entry.notes : "",

@@ -25,9 +25,6 @@
     "@typescript-eslint/consistent-type-assertions": {
       "count": 4
     },
-    "@typescript-eslint/no-base-to-string": {
-      "count": 1
-    },
     "@typescript-eslint/restrict-template-expressions": {
       "count": 9
     },
