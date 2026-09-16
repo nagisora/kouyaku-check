@@ -10,7 +10,7 @@ importers:
     dependencies:
       astro:
         specifier: ^5.13.7
-        version: 5.18.2(@types/node@26.5.0)(jiti@2.7.0)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0)
+        version: 5.18.2(@types/node@26.5.0)(jiti@2.7.0)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.1)
       js-yaml:
         specifier: ^4.1.0
         version: 4.3.2
@@ -46,8 +46,8 @@ importers:
         specifier: ^17.12.0
         version: 17.12.0
       knip:
-        specifier: ^6.35.0
-        version: 6.35.0
+        specifier: ^6.35.1
+        version: 6.35.1
       prettier:
         specifier: ^3.9.6
         version: 3.9.6
@@ -59,7 +59,7 @@ importers:
         version: 8.70.0(eslint@10.10.0(jiti@2.7.0))(typescript@5.9.3)
       vitest:
         specifier: ^5.0.0
-        version: 5.0.0(@types/node@26.5.0)(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.5.0)(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1))
 
 packages:
 
@@ -711,8 +711,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@napi-rs/wasm-runtime@1.2.3':
-    resolution: {integrity: sha512-UMduMbqO5s5zF2NkNacMT/yK5Y5QiKvWr2+50bzIIxFDwVJ2h49b+oyjaCGPhJxd2/gC2x39EHv/gHVuu36x2Q==}
+  '@napi-rs/wasm-runtime@1.2.4':
+    resolution: {integrity: sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
     peerDependencies:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
@@ -1886,8 +1886,8 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  knip@6.35.0:
-    resolution: {integrity: sha512-eER1hSyi47lJTO9MTnEoJspEscPaVuFtFkHsGbuCmhjDlphzvg2xxcweNg1NCeylo9ERSkb/NzAo7sAcT9gLmA==}
+  knip@6.35.1:
+    resolution: {integrity: sha512-22wnEnv4do2fvoeJsxpFCG/MBxReNxoCVBccaCl7suUJsG+F0UvxI9ycxZ9YgtLHSSjrZl5tOas0JZ/R1vJ93g==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -2832,6 +2832,11 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yaml@2.9.1:
+    resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -2874,8 +2879,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.5.4:
-    resolution: {integrity: sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA==}
+  zod@4.6.4:
+    resolution: {integrity: sha512-AXSD6hvGdvRjajG/l1cC+d6IrhH+sjmPKtYeQdJIK8MFJl3LyClzS+o/YsVC+zQZPupAaeH5skwwm8YqYH7BqA==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -2966,7 +2971,7 @@ snapshots:
 
   '@astrojs/yaml2ts@0.2.4':
     dependencies:
-      yaml: 2.9.0
+      yaml: 2.9.1
 
   '@babel/helper-string-parser@7.29.7': {}
 
@@ -3364,7 +3369,7 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
-  '@napi-rs/wasm-runtime@1.2.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
+  '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
     dependencies:
       '@emnapi/core': 1.11.2
       '@emnapi/runtime': 1.11.2
@@ -3484,7 +3489,7 @@ snapshots:
     dependencies:
       '@emnapi/core': 1.11.2
       '@emnapi/runtime': 1.11.2
-      '@napi-rs/wasm-runtime': 1.2.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
+      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
     optional: true
 
   '@oxc-resolver/binding-win32-arm64-msvc@11.24.2':
@@ -3748,14 +3753,14 @@ snapshots:
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@vitest/mocker@5.0.0(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0))':
+  '@vitest/mocker@5.0.0(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.0
       estree-walker: 3.0.3
       magic-string: 1.2.3
     optionalDependencies:
-      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)
+      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)
 
   '@vitest/spy@5.0.0': {}
 
@@ -3860,7 +3865,7 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  astro@5.18.2(@types/node@26.5.0)(jiti@2.7.0)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0):
+  astro@5.18.2(@types/node@26.5.0)(jiti@2.7.0)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.1):
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/internal-helpers': 0.7.6
@@ -3917,8 +3922,8 @@ snapshots:
       unist-util-visit: 5.1.0
       unstorage: 1.17.5
       vfile: 6.0.3
-      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0))
+      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)
+      vitefu: 1.1.3(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -4567,7 +4572,7 @@ snapshots:
 
   kleur@4.1.5: {}
 
-  knip@6.35.0:
+  knip@6.35.1:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.7)
       formatly: 0.7.0
@@ -4580,8 +4585,8 @@ snapshots:
       strip-json-comments: 5.0.3
       tinyglobby: 0.2.17
       unbash: 4.0.11
-      yaml: 2.9.0
-      zod: 4.5.4
+      yaml: 2.9.1
+      zod: 4.6.4
 
   levn@0.4.1:
     dependencies:
@@ -5543,7 +5548,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0):
+  vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.7)
@@ -5555,16 +5560,16 @@ snapshots:
       '@types/node': 26.5.0
       fsevents: 2.3.3
       jiti: 2.7.0
-      yaml: 2.9.0
+      yaml: 2.9.1
 
-  vitefu@1.1.3(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)):
     optionalDependencies:
-      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)
+      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)
 
-  vitest@5.0.0(@types/node@26.5.0)(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)):
+  vitest@5.0.0(@types/node@26.5.0)(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.0(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0))
+      '@vitest/mocker': 5.0.0(vite@6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1))
       chai: 6.2.2
       es-module-lexer: 2.3.2
       expect-type: 1.4.0
@@ -5575,7 +5580,7 @@ snapshots:
       tinybench: 6.1.4
       tinyexec: 1.3.0
       tinyglobby: 0.2.17
-      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.0)
+      vite: 6.4.3(@types/node@26.5.0)(jiti@2.7.0)(yaml@2.9.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.5.0
@@ -5738,6 +5743,8 @@ snapshots:
 
   yaml@2.9.0: {}
 
+  yaml@2.9.1: {}
+
   yargs-parser@21.1.1: {}
 
   yargs-parser@22.0.0: {}
@@ -5772,6 +5779,6 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.5.4: {}
+  zod@4.6.4: {}
 
   zwitch@2.0.4: {}
