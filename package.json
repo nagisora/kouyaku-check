@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "astro": "^5.13.7",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^5.4.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
