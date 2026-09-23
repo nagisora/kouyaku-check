@@ -17,7 +17,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "astro": "^5.13.7",
+    "astro": "^7.3.3",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
